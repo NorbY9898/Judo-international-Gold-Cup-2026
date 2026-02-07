@@ -351,7 +351,7 @@
     }
 
     /* =========================================================
-       ✅ ÚJ: OLDALSÓ BANNEREK (PC) + MOBILON ALUL + FOOTER BRAND
+       ✅ FIX + UPGRADE: PC bannerek lokalizálva + nagyobb méret
        ========================================================= */
     .banner-rails{
       position:fixed;
@@ -363,20 +363,25 @@
     }
     .banner-rail{
       position:absolute;
-      width:170px;
+      width:260px;          /* ✅ nagyobb bannerek */
       pointer-events:auto;
     }
-    .banner-left{ left:14px; }
-    .banner-right{ right:14px; }
+    .banner-left{ left:18px; }
+    .banner-right{ right:18px; }
 
     .banner-card{
       display:block;
-      border-radius:16px;
+      border-radius:18px;
       overflow:hidden;
-      border:1px solid rgba(255,215,0,0.45);
+      border:1px solid rgba(255,215,0,0.5);
       background: rgba(8,8,8,0.92);
-      box-shadow:0 0 14px rgba(0,0,0,0.85), 0 0 18px rgba(255,215,0,0.12);
-      margin-bottom:12px;
+      box-shadow:0 0 16px rgba(0,0,0,0.85), 0 0 22px rgba(255,215,0,0.14);
+      margin-bottom:14px;
+      transition:transform 0.12s ease, filter 0.12s ease;
+    }
+    .banner-card:hover{
+      transform: translateY(-1px);
+      filter: brightness(1.04);
     }
     .banner-card img{
       width:100%;
@@ -384,34 +389,43 @@
       display:block;
     }
     .banner-cap{
-      padding:10px 10px 12px;
-      font-size:0.82rem;
+      padding:12px 12px 14px;
+      font-size:0.9rem;
       color:#e8e8e8;
       line-height:1.35;
+    }
+    .banner-cap strong{
+      display:block;
+      margin-bottom:2px;
+      color:#FFE88A;
+      font-size:0.95rem;
     }
     .banner-cta{
       margin-top:8px;
       display:inline-block;
-      font-size:0.78rem;
+      font-size:0.85rem;
       color:#FFD700;
       opacity:0.95;
     }
     .banner-cta:hover{ opacity:1; }
 
-    @media (min-width: 1100px){
+    /* több hely a széleken, hogy ne fedje a tartalmat */
+    @media (min-width: 1300px){
       body{
-        padding-left:190px;
-        padding-right:190px;
+        padding-left:300px;   /* ✅ igazítva a 260px bannerhez */
+        padding-right:300px;
       }
     }
 
+    /* Mobilon ne legyen fixed oldalt, hanem alul jelenjen meg */
     .mobile-banners{ display:none; margin-top:16px; }
-    @media (max-width: 1099px){
+    @media (max-width: 1299px){
       .banner-rails{ display:none; }
       body{ padding-left:0; padding-right:0; }
       .mobile-banners{ display:block; }
     }
 
+    /* Footer brand */
     .footer-brand{
       margin-top:10px;
       display:flex;
@@ -438,48 +452,50 @@
 <body>
 
 <!-- =========================================================
-     ✅ ÚJ: PC oldalsó bannerek (NSPORT)
-     KÉPEKET TEDD A REPÓBA, AZ INDEX MELLÉ:
+     ✅ PC oldalsó bannerek (NSPORT) – MOST MÁR FORDULNAK IS!
+     KÉPEK AZ INDEX MELLÉ:
      nsport_banner_1.jpg
      nsport_banner_2.jpg
      nsport_banner_3.jpg
      nsport_banner_4.jpg
      ========================================================= -->
-<div class="banner-rails" aria-label="Nsport reklám bannerek">
+<div class="banner-rails" aria-label="Nsport banners">
   <div class="banner-rail banner-left">
     <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
-      <img src="nsport_banner_1.jpg" alt="Nsport – termék ajánló 1">
+      <img src="nsport_banner_1.jpg" alt="Nsport banner 1">
       <div class="banner-cap">
-        <strong>Nsport</strong><br>
-        Új termékek & akciók
-        <span class="banner-cta">Megnézem →</span>
+        <strong data-i18n="pc-ads-1-title"></strong>
+        <span data-i18n="pc-ads-1-text"></span><br>
+        <span class="banner-cta" data-i18n="pc-ads-cta"></span>
       </div>
     </a>
 
     <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
-      <img src="nsport_banner_2.jpg" alt="Nsport – termék ajánló 2">
+      <img src="nsport_banner_2.jpg" alt="Nsport banner 2">
       <div class="banner-cap">
-        Sport cuccok – gyors rendelés
-        <span class="banner-cta">Megnézem →</span>
+        <strong data-i18n="pc-ads-2-title"></strong>
+        <span data-i18n="pc-ads-2-text"></span><br>
+        <span class="banner-cta" data-i18n="pc-ads-cta"></span>
       </div>
     </a>
   </div>
 
   <div class="banner-rail banner-right">
     <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
-      <img src="nsport_banner_3.jpg" alt="Nsport – termék ajánló 3">
+      <img src="nsport_banner_3.jpg" alt="Nsport banner 3">
       <div class="banner-cap">
-        <strong>Nsport</strong><br>
-        Ruházat & felszerelés
-        <span class="banner-cta">Megnézem →</span>
+        <strong data-i18n="pc-ads-3-title"></strong>
+        <span data-i18n="pc-ads-3-text"></span><br>
+        <span class="banner-cta" data-i18n="pc-ads-cta"></span>
       </div>
     </a>
 
     <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
-      <img src="nsport_banner_4.jpg" alt="Nsport – termék ajánló 4">
+      <img src="nsport_banner_4.jpg" alt="Nsport banner 4">
       <div class="banner-cap">
-        Kiemelt termékek
-        <span class="banner-cta">Megnézem →</span>
+        <strong data-i18n="pc-ads-4-title"></strong>
+        <span data-i18n="pc-ads-4-text"></span><br>
+        <span class="banner-cta" data-i18n="pc-ads-cta"></span>
       </div>
     </a>
   </div>
@@ -488,7 +504,6 @@
 <header>
   <div class="wrapper nav">
     <div class="nav-brand">
-      <!-- TODO: ide a saját logód fájlneve -->
       <img src="logo.png" alt="Judo Arany Kupa logó" class="nav-logo" />
       <span class="logo-text" data-i18n="logo-text">Nemzetközi Judo Arany Kupa 2026</span>
     </div>
@@ -526,10 +541,7 @@
       </div>
 
       <div class="hero-cta">
-        <a class="btn-primary"
-           href="#download"
-           data-i18n="hero-cta-primary"></a>
-
+        <a class="btn-primary" href="#download" data-i18n="hero-cta-primary"></a>
         <a class="btn-secondary" href="#categories" data-i18n="hero-cta-secondary"></a>
       </div>
     </div>
@@ -652,9 +664,7 @@
       <div class="download-title" data-i18n="download-title"></div>
       <div class="download-sub" data-i18n="download-sub"></div>
 
-      <!-- ✅ LETÖLTÉS GOMB -->
       <a class="btn-primary" id="btn-download" href="#" target="_blank" rel="noopener" data-i18n="download-btn"></a>
-
       <div class="hero-note" style="margin-top:10px;" data-i18n="download-note"></div>
     </div>
   </section>
@@ -677,23 +687,16 @@
       <div class="contact-box">
         <div style="font-weight:bold;margin-bottom:6px;" data-i18n="contact-direct"></div>
         <div class="contact-buttons">
-          <a class="btn-secondary" href="tel:+40745326270" data-i18n="contact-call"></a>
-          <a class="btn-secondary" href="mailto:norbertnagy9898@yahoo.com" data-i18n="contact-email"></a>
-          <a class="btn-primary"
-             href="https://wa.me/40745326270"
-             target="_blank"
-             rel="noopener"
-             data-i18n="contact-whatsapp"></a>
+          <a class="btn-secondary" href="tel:+40740901573" data-i18n="contact-call"></a>
+          <a class="btn-secondary" href="mailto:steliannagy@yahoo.com" data-i18n="contact-email"></a>
+          <a class="btn-primary" href="https://wa.me/40740901573" target="_blank" rel="noopener" data-i18n="contact-whatsapp"></a>
         </div>
         <div class="contact-small" data-i18n="contact-langs"></div>
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       ✅ ÚJ: MOBILON A BANNEREK ALUL JELENNEK MEG
-       (PC-n oldalt vannak, mobilon itt lent)
-       ========================================================= -->
+  <!-- MOBIL: BANNEREK ALUL -->
   <section class="mobile-banners">
     <h2 class="section-title" style="font-size:1.2rem;" data-i18n="mobile-ads-title"></h2>
     <p class="section-sub" style="margin-bottom:12px;" data-i18n="mobile-ads-sub"></p>
@@ -701,19 +704,19 @@
     <div class="grid-3">
       <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
         <div class="card-title" data-i18n="mobile-ads-1-title"></div>
-        <img src="nsport_banner_1.jpg" alt="Nsport – Újdonságok" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
+        <img src="nsport_banner_1.jpg" alt="Nsport – New arrivals" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
         <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-1-text"></div>
       </a>
 
       <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
         <div class="card-title" data-i18n="mobile-ads-2-title"></div>
-        <img src="nsport_banner_3.jpg" alt="Nsport – Kiemelt termék" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
+        <img src="nsport_banner_3.jpg" alt="Nsport – Featured" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
         <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-2-text"></div>
       </a>
 
       <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
         <div class="card-title" data-i18n="mobile-ads-3-title"></div>
-        <img src="nsport_banner_2.jpg" alt="Nsport – Akciók" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
+        <img src="nsport_banner_2.jpg" alt="Nsport – Deals" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
         <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-3-text"></div>
       </a>
     </div>
@@ -721,13 +724,8 @@
 
   <footer>
     <span data-i18n="footer-text"></span>
-
-    <!-- =========================================================
-         ✅ ÚJ: NextN-design credit + logó hely
-         Töltsd fel a repóba az index mellé: nextn-logo.png
-         ========================================================= -->
     <div class="footer-brand">
-      <img src="nextn_logo.png" alt="NextN-design logó">
+      <img src="nextn-logo.png" alt="NextN-design logó">
       <span data-i18n="footer-madeby"></span>
       <a href="https://norby9898.github.io/NextN-Digital" target="_blank" rel="noopener">NextN-design</a>
     </div>
@@ -743,8 +741,10 @@ let currentLang = 'hu';
 
 /* ==========================
    ✅ IDE RAKD BE A WORD LETÖLTÉSI LINKET
-   (Ha ugyan ebbe a repóba töltöd fel a docx-et, elég pl.: "Nevezesi_lista.docx"
-   vagy ha mappába: "files/Nevezesi_lista.docx")
+   Ha ugyan ebbe a repóba töltöd fel a docx-et, elég pl.:
+   const DOWNLOAD_URL = "Nevezesi_lista.docx";
+   vagy mappában:
+   const DOWNLOAD_URL = "files/Nevezesi_lista.docx";
    ========================== */
 const DOWNLOAD_URL = "IDE_ILLASZD_BE_A_WORD_LINKET.docx"; // <-- ITT CSERÉLD LE!
 
@@ -840,6 +840,7 @@ const texts = {
     "contact-whatsapp": "💬 WhatsApp üzenet",
     "contact-langs": "Válaszolunk magyarul, románul és angolul is. 🙂",
 
+    /* ✅ MOBIL ADS */
     "mobile-ads-title": "Nsport ajánlók",
     "mobile-ads-sub": "Kiemelt termékek és újdonságok",
     "mobile-ads-1-title": "Nsport – Újdonságok",
@@ -849,12 +850,23 @@ const texts = {
     "mobile-ads-3-title": "Nsport – Akciók",
     "mobile-ads-3-text": "Akciók, csomagok, gyors rendelés.",
 
+    /* ✅ PC ADS (EZ VOLT A HIBA FIX!) */
+    "pc-ads-1-title": "Nsport",
+    "pc-ads-1-text": "Új termékek & akciók",
+    "pc-ads-2-title": "Nsport",
+    "pc-ads-2-text": "Sport cuccok – gyors rendelés",
+    "pc-ads-3-title": "Nsport",
+    "pc-ads-3-text": "Ruházat & felszerelés",
+    "pc-ads-4-title": "Nsport",
+    "pc-ads-4-text": "Kiemelt termékek",
+    "pc-ads-cta": "Megnézem →",
+
     "footer-madeby": "Készítette:",
     "footer-text": "© 2026 Nemzetközi Judo Arany Kupa – Minden jog fenntartva."
   },
 
   ro: {
-    "logo-text": "Cupa Internațională de Judo „Arany” 2026",
+    "logo-text": "Cupa Internațională de Judo Aur 2026",
 
     "nav-about": "Competiție",
     "nav-location": "Locație",
@@ -862,7 +874,7 @@ const texts = {
     "nav-download": "Descărcare",
     "nav-contact": "Contact",
 
-    "hero-title": 'Cupa Internațională <span class="accent">de Judo Arany</span> 2026',
+    "hero-title": 'Cupa Internațională <span class="accent">de Judo Aur</span> 2026',
     "hero-sub": "Competiție internațională de judo la Oradea. <br>Informații, categorii și listă Word de descărcat într-un singur loc.",
     "badge1": "Competiție internațională",
     "badge2": "Oradea",
@@ -871,7 +883,7 @@ const texts = {
     "hero-cta-secondary": "🥋 Vezi categoriile",
 
     "preview-logo": "JUDO",
-    "preview-name": "Arany 2026",
+    "preview-name": "Aur 2026",
     "preview-desc": "Info • locație • categorii • descărcări",
     "preview-note": "Totul clar, rapid și optimizat pentru mobil – util pentru cluburi și părinți.",
 
@@ -939,6 +951,7 @@ const texts = {
     "contact-whatsapp": "💬 WhatsApp",
     "contact-langs": "Răspundem în maghiară, română și engleză. 🙂",
 
+    /* ✅ MOBIL ADS */
     "mobile-ads-title": "Recomandări Nsport",
     "mobile-ads-sub": "Produse evidențiate și noutăți",
     "mobile-ads-1-title": "Nsport – Noutăți",
@@ -947,6 +960,17 @@ const texts = {
     "mobile-ads-2-text": "Îmbrăcăminte & echipament într-un singur loc.",
     "mobile-ads-3-title": "Nsport – Oferte",
     "mobile-ads-3-text": "Promoții, pachete, comandă rapidă.",
+
+    /* ✅ PC ADS */
+    "pc-ads-1-title": "Nsport",
+    "pc-ads-1-text": "Produse noi & promoții",
+    "pc-ads-2-title": "Nsport",
+    "pc-ads-2-text": "Echipament sport – comandă rapidă",
+    "pc-ads-3-title": "Nsport",
+    "pc-ads-3-text": "Îmbrăcăminte & echipament",
+    "pc-ads-4-title": "Nsport",
+    "pc-ads-4-text": "Produse evidențiate",
+    "pc-ads-cta": "Vezi →",
 
     "footer-madeby": "Creat de:",
     "footer-text": "© 2026 Cupa Internațională de Judo Arany – Toate drepturile rezervate."
@@ -1038,6 +1062,7 @@ const texts = {
     "contact-whatsapp": "💬 WhatsApp",
     "contact-langs": "We can reply in Hungarian, Romanian and English. 🙂",
 
+    /* ✅ MOBIL ADS */
     "mobile-ads-title": "Nsport picks",
     "mobile-ads-sub": "Featured products and new arrivals",
     "mobile-ads-1-title": "Nsport – New arrivals",
@@ -1046,6 +1071,17 @@ const texts = {
     "mobile-ads-2-text": "Apparel & equipment in one place.",
     "mobile-ads-3-title": "Nsport – Deals",
     "mobile-ads-3-text": "Promos, bundles, quick order.",
+
+    /* ✅ PC ADS */
+    "pc-ads-1-title": "Nsport",
+    "pc-ads-1-text": "New arrivals & deals",
+    "pc-ads-2-title": "Nsport",
+    "pc-ads-2-text": "Sports gear – quick order",
+    "pc-ads-3-title": "Nsport",
+    "pc-ads-3-text": "Apparel & equipment",
+    "pc-ads-4-title": "Nsport",
+    "pc-ads-4-text": "Featured products",
+    "pc-ads-cta": "View →",
 
     "footer-madeby": "Made by:",
     "footer-text": "© 2026 International Judo Golden Cup – All rights reserved."
