@@ -3,12 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nemzetközi Judo Arany Kupa 2026</title>
+  <title>Concurs internațional de judo – Cupa de Aur 2026</title>
 
   <style>
     *{ box-sizing:border-box; margin:0; padding:0; font-family:Arial, sans-serif; }
-    body{ background:radial-gradient(circle at top,#2b2b2b,#050505); color:#f7f7f7; }
     a{text-decoration:none;color:inherit;}
+
+    /* =========================
+       ✅ HÁTTÉR + OVERLAY + NOISE
+       ========================= */
+    body{
+      color:#f7f7f7;
+      /* a poszter háttér */
+      background:
+        radial-gradient(circle at top, rgba(43,43,43,0.25), rgba(5,5,5,0.95)),
+        url("bg.png");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* plusz sötét vignetta, hogy olvasható legyen */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(0,0,0,0.25), rgba(0,0,0,0.80));
+    }
+
+    /* ✅ DINAMIKUS GRAIN/NOISE (kódos, nem kell külön fájl) */
+    .bg-noise{
+      position:fixed;
+      inset:0;
+      z-index:0;              /* a tartalom mögött, de a háttér felett */
+      pointer-events:none;
+      opacity:0.08;           /* állíthatod: 0.05–0.12 */
+      mix-blend-mode: overlay;
+      background-size: 180px 180px;
+      animation: noiseShift 0.85s steps(2) infinite;
+      /* Inline SVG "noise" - nem kell noise.png */
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    @keyframes noiseShift{
+      0%   { transform: translate(0,0); }
+      100% { transform: translate(-12px, 10px); }
+    }
+
+    /* a tartalom legyen a noise felett */
+    header, main, footer, .banner-rails{ position:relative; z-index:2; }
+
     .wrapper{ max-width:1100px; margin:0 auto; padding:0 16px 40px; }
     .accent{ color:#FFD700; }
 
@@ -172,7 +219,7 @@
 
     /* PC oldalsó bannerek */
     .banner-rails{ position:fixed; top:90px; left:0; right:0; z-index:2; pointer-events:none; }
-    .banner-rail{ position:absolute; width:280px; pointer-events:auto; }
+    .banner-rail{ position:absolute; width:300px; pointer-events:auto; } /* nagyobb */
     .banner-left{ left:18px; }
     .banner-right{ right:18px; }
 
@@ -194,7 +241,7 @@
     .banner-cta:hover{ opacity:1; }
 
     @media (min-width: 1350px){
-      body{ padding-left:320px; padding-right:320px; }
+      body{ padding-left:340px; padding-right:340px; } /* nagyobb tér a bannereknek */
     }
 
     /* Mobilon a bannerek alul */
@@ -223,685 +270,692 @@
     }
     .footer-brand a{ color:#FFD700; opacity:0.95; }
     .footer-brand a:hover{ opacity:1; }
+
+    /* Ha a fixed háttér mobilon laggolna, ez segít */
+    @media (max-width: 800px){
+      body{ background-attachment: scroll; }
+      .bg-noise{ opacity:0.06; }
+    }
   </style>
 </head>
 
 <body>
+  <!-- ✅ Dinamikus grain réteg -->
+  <div class="bg-noise" aria-hidden="true"></div>
 
-<!-- PC bannerek -->
-<div class="banner-rails" aria-label="Nsport banners">
-  <div class="banner-rail banner-left">
-    <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
-      <img src="nsport_banner_1.jpg" alt="Nsport banner 1">
-      <div class="banner-cap">
-        <strong data-i18n="pc-ads-1-title"></strong>
-        <span data-i18n="pc-ads-1-text"></span><br>
-        <span class="banner-cta" data-i18n="pc-ads-cta"></span>
-      </div>
-    </a>
+  <!-- PC bannerek -->
+  <div class="banner-rails" aria-label="Nsport banners">
+    <div class="banner-rail banner-left">
+      <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
+        <img src="nsport_banner_1.jpg" alt="Nsport banner 1">
+        <div class="banner-cap">
+          <strong data-i18n="pc-ads-1-title"></strong>
+          <span data-i18n="pc-ads-1-text"></span><br>
+          <span class="banner-cta" data-i18n="pc-ads-cta"></span>
+        </div>
+      </a>
 
-    <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
-      <img src="nsport_banner_2.jpg" alt="Nsport banner 2">
-      <div class="banner-cap">
-        <strong data-i18n="pc-ads-2-title"></strong>
-        <span data-i18n="pc-ads-2-text"></span><br>
-        <span class="banner-cta" data-i18n="pc-ads-cta"></span>
-      </div>
-    </a>
-  </div>
-
-  <div class="banner-rail banner-right">
-    <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
-      <img src="nsport_banner_3.jpg" alt="Nsport banner 3">
-      <div class="banner-cap">
-        <strong data-i18n="pc-ads-3-title"></strong>
-        <span data-i18n="pc-ads-3-text"></span><br>
-        <span class="banner-cta" data-i18n="pc-ads-cta"></span>
-      </div>
-    </a>
-
-    <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
-      <img src="nsport_banner_4.jpg" alt="Nsport banner 4">
-      <div class="banner-cap">
-        <strong data-i18n="pc-ads-4-title"></strong>
-        <span data-i18n="pc-ads-4-text"></span><br>
-        <span class="banner-cta" data-i18n="pc-ads-cta"></span>
-      </div>
-    </a>
-  </div>
-</div>
-
-<header>
-  <div class="wrapper nav">
-    <div class="nav-brand">
-      <img src="logo.png" alt="Judo Arany Kupa logó" class="nav-logo" />
-      <span class="logo-text" data-i18n="logo-text">Nemzetközi Judo Arany Kupa 2026</span>
+      <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
+        <img src="nsport_banner_2.jpg" alt="Nsport banner 2">
+        <div class="banner-cap">
+          <strong data-i18n="pc-ads-2-title"></strong>
+          <span data-i18n="pc-ads-2-text"></span><br>
+          <span class="banner-cta" data-i18n="pc-ads-cta"></span>
+        </div>
+      </a>
     </div>
 
-    <div class="nav-center">
-      <nav class="nav-links">
-        <a href="#about" data-i18n="nav-about">Verseny</a>
-        <a href="#location" data-i18n="nav-location">Helyszín</a>
-        <a href="#categories" data-i18n="nav-categories">Kategóriák</a>
-        <a href="#download" data-i18n="nav-download">Letöltés</a>
-        <a href="#contact" data-i18n="nav-contact">Kapcsolat</a>
-      </nav>
-    </div>
+    <div class="banner-rail banner-right">
+      <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
+        <img src="nsport_banner_3.jpg" alt="Nsport banner 3">
+        <div class="banner-cap">
+          <strong data-i18n="pc-ads-3-title"></strong>
+          <span data-i18n="pc-ads-3-text"></span><br>
+          <span class="banner-cta" data-i18n="pc-ads-cta"></span>
+        </div>
+      </a>
 
-    <div class="lang-switch">
-      <button class="lang-btn active" id="btn-hu">HU</button>
-      <button class="lang-btn" id="btn-ro">RO</button>
-      <button class="lang-btn" id="btn-en">EN</button>
+      <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
+        <img src="nsport_banner_4.jpg" alt="Nsport banner 4">
+        <div class="banner-cap">
+          <strong data-i18n="pc-ads-4-title"></strong>
+          <span data-i18n="pc-ads-4-text"></span><br>
+          <span class="banner-cta" data-i18n="pc-ads-cta"></span>
+        </div>
+      </a>
     </div>
   </div>
-</header>
 
-<main class="wrapper">
-
-  <!-- HERO -->
-  <section class="hero" id="about">
-    <div>
-      <h1 class="hero-title" data-i18n="hero-title"></h1>
-      <p class="hero-sub" data-i18n="hero-sub"></p>
-
-      <div class="hero-badges">
-        <span class="badge" data-i18n="badge1"></span>
-        <span class="badge" data-i18n="badge2"></span>
-        <span class="badge" data-i18n="badge3"></span>
+  <header>
+    <div class="wrapper nav">
+      <div class="nav-brand">
+        <img src="logo.png" alt="Judo Cupa de Aur logó" class="nav-logo" />
+        <span class="logo-text" data-i18n="logo-text">Concurs internațional de judo – Cupa de Aur 2026</span>
       </div>
 
-      <div class="hero-cta">
-        <a class="btn-primary" href="#download" data-i18n="hero-cta-primary"></a>
-        <a class="btn-secondary" href="#categories" data-i18n="hero-cta-secondary"></a>
+      <div class="nav-center">
+        <nav class="nav-links">
+          <a href="#about" data-i18n="nav-about">Verseny</a>
+          <a href="#location" data-i18n="nav-location">Helyszín</a>
+          <a href="#categories" data-i18n="nav-categories">Kategóriák</a>
+          <a href="#download" data-i18n="nav-download">Letöltés</a>
+          <a href="#contact" data-i18n="nav-contact">Kapcsolat</a>
+        </nav>
+      </div>
+
+      <div class="lang-switch">
+        <button class="lang-btn active" id="btn-hu">HU</button>
+        <button class="lang-btn" id="btn-ro">RO</button>
+        <button class="lang-btn" id="btn-en">EN</button>
       </div>
     </div>
+  </header>
 
-    <div class="hero-card">
-      <div class="hero-mini">
-        <div class="hero-mini-logo" data-i18n="preview-logo">JUDO</div>
-        <div style="font-size:0.9rem;margin-bottom:2px;" data-i18n="preview-name">Arany Kupa 2026</div>
-        <div style="font-size:0.75rem;color:#c7c7c7;" data-i18n="preview-desc"></div>
-        <div class="hero-mini-buttons">
-          <div class="mini-btn">📍</div>
-          <div class="mini-btn">⏱</div>
-          <div class="mini-btn">🥋</div>
-          <div class="mini-btn">📄</div>
-          <div class="mini-btn">☎</div>
+  <main class="wrapper">
+
+    <!-- HERO -->
+    <section class="hero" id="about">
+      <div>
+        <h1 class="hero-title" data-i18n="hero-title"></h1>
+        <p class="hero-sub" data-i18n="hero-sub"></p>
+
+        <div class="hero-badges">
+          <span class="badge" data-i18n="badge1"></span>
+          <span class="badge" data-i18n="badge2"></span>
+          <span class="badge" data-i18n="badge3"></span>
+        </div>
+
+        <div class="hero-cta">
+          <a class="btn-primary" href="#download" data-i18n="hero-cta-primary"></a>
+          <a class="btn-secondary" href="#categories" data-i18n="hero-cta-secondary"></a>
         </div>
       </div>
-      <p class="hero-note" data-i18n="preview-note"></p>
-    </div>
-  </section>
 
-  <!-- VERSENY LEÍRÁS -->
-  <section>
-    <h2 class="section-title" data-i18n="about-title"></h2>
-    <p class="section-sub" data-i18n="about-sub"></p>
-
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-title" data-i18n="about-card1-title"></div>
-        <ul class="list">
-          <li data-i18n="about-li1"></li>
-          <li data-i18n="about-li2"></li>
-          <li data-i18n="about-li3"></li>
-          <li data-i18n="about-li4"></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-title" data-i18n="about-card2-title"></div>
-        <ul class="list">
-          <li data-i18n="about-li5"></li>
-          <li data-i18n="about-li6"></li>
-          <li data-i18n="about-li7"></li>
-          <li data-i18n="about-li8"></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-title" data-i18n="about-card3-title"></div>
-        <ul class="list">
-          <li data-i18n="about-li9"></li>
-          <li data-i18n="about-li10"></li>
-          <li data-i18n="about-li11"></li>
-          <li data-i18n="about-li12"></li>
-          <!-- ✅ ÚJ FELELŐSSÉGI SZÖVEG -->
-          <li data-i18n="about-li13"></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- HELYSZÍN -->
-  <section id="location">
-    <h2 class="section-title" data-i18n="location-title"></h2>
-    <p class="section-sub" data-i18n="location-sub"></p>
-
-    <div class="card">
-      <div class="card-title" data-i18n="location-card-title"></div>
-      <ul class="list">
-        <li data-i18n="location-li1"></li>
-        <li data-i18n="location-li2"></li>
-        <li data-i18n="location-li3"></li>
-        <li data-i18n="location-li4"></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- KATEGÓRIÁK -->
-  <section id="categories">
-    <h2 class="section-title" data-i18n="categories-title"></h2>
-    <p class="section-sub" data-i18n="categories-sub"></p>
-
-    <div class="cat-block">
-      <div class="card-title" style="margin-bottom:2px;" data-i18n="cat-only-title"></div>
-      <div class="section-sub" style="margin:6px 0 0;" data-i18n="cat-only-sub"></div>
-
-      <div class="cat-group">
-        <h3 data-i18n="u10-title"></h3>
-        <div class="cat-meta" data-i18n="u10-years"></div>
-        <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u10-male"></span></div>
-        <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u10-female"></span></div>
-        <div class="cat-meta" style="margin-top:10px;" data-i18n="u10-time"></div>
-      </div>
-
-      <div class="cat-group">
-        <h3 data-i18n="u12-title"></h3>
-        <div class="cat-meta" data-i18n="u12-years"></div>
-        <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u12-male"></span></div>
-        <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u12-female"></span></div>
-        <div class="cat-meta" style="margin-top:10px;" data-i18n="u12-time"></div>
-      </div>
-
-      <div class="cat-group">
-        <h3 data-i18n="u14-title"></h3>
-        <div class="cat-meta" data-i18n="u14-years"></div>
-        <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u14-male"></span></div>
-        <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u14-female"></span></div>
-        <div class="cat-meta" style="margin-top:10px;" data-i18n="u14-time"></div>
-      </div>
-
-      <div class="cat-group">
-        <h3 data-i18n="u16-title"></h3>
-        <div class="cat-meta" data-i18n="u16-years"></div>
-        <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u16-male"></span></div>
-        <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u16-female"></span></div>
-        <div class="cat-meta" style="margin-top:10px;" data-i18n="u16-time"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LETÖLTÉS -->
-  <section id="download">
-    <h2 class="section-title" data-i18n="download-section-title"></h2>
-    <div class="download-card">
-      <div class="download-title" data-i18n="download-title"></div>
-      <div class="download-sub" data-i18n="download-sub"></div>
-      <a class="btn-primary" id="btn-download" href="#" target="_blank" rel="noopener" data-i18n="download-btn"></a>
-      <div class="hero-note" style="margin-top:10px;" data-i18n="download-note"></div>
-    </div>
-  </section>
-
-  <!-- KAPCSOLAT -->
-  <section id="contact">
-    <h2 class="section-title" data-i18n="contact-title"></h2>
-
-    <div class="contact-grid">
-      <div class="contact-text">
-        <p data-i18n="contact-main"></p>
-        <p style="margin-top:10px;" data-i18n="contact-list-intro"></p>
-        <ul class="list">
-          <li data-i18n="contact-li1"></li>
-          <li data-i18n="contact-li2"></li>
-          <li data-i18n="contact-li3"></li>
-        </ul>
-      </div>
-
-      <div class="contact-box">
-        <div style="font-weight:bold;margin-bottom:6px;" data-i18n="contact-direct"></div>
-        <div class="contact-buttons">
-          <a class="btn-secondary" href="tel:+40740901573" data-i18n="contact-call"></a>
-          <a class="btn-secondary" href="mailto:steliannagy@yahoo.com" data-i18n="contact-email"></a>
-          <a class="btn-primary" href="https://wa.me/40740901573" target="_blank" rel="noopener" data-i18n="contact-whatsapp"></a>
+      <div class="hero-card">
+        <div class="hero-mini">
+          <div class="hero-mini-logo" data-i18n="preview-logo">JUDO</div>
+          <div style="font-size:0.9rem;margin-bottom:2px;" data-i18n="preview-name">Cupa de Aur 2026</div>
+          <div style="font-size:0.75rem;color:#c7c7c7;" data-i18n="preview-desc"></div>
+          <div class="hero-mini-buttons">
+            <div class="mini-btn">📍</div>
+            <div class="mini-btn">⏱</div>
+            <div class="mini-btn">🥋</div>
+            <div class="mini-btn">📄</div>
+            <div class="mini-btn">☎</div>
+          </div>
         </div>
-        <div class="contact-small" data-i18n="contact-langs"></div>
+        <p class="hero-note" data-i18n="preview-note"></p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- MOBIL: BANNEREK ALUL -->
-  <section class="mobile-banners">
-    <h2 class="section-title" style="font-size:1.2rem;" data-i18n="mobile-ads-title"></h2>
-    <p class="section-sub" style="margin-bottom:12px;" data-i18n="mobile-ads-sub"></p>
+    <!-- VERSENY LEÍRÁS -->
+    <section>
+      <h2 class="section-title" data-i18n="about-title"></h2>
+      <p class="section-sub" data-i18n="about-sub"></p>
 
-    <div class="grid-3">
-      <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
-        <div class="card-title" data-i18n="mobile-ads-1-title"></div>
-        <img src="nsport_banner_1.jpg" alt="Nsport – New arrivals" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
-        <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-1-text"></div>
-      </a>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title" data-i18n="about-card1-title"></div>
+          <ul class="list">
+            <li data-i18n="about-li1"></li>
+            <li data-i18n="about-li2"></li>
+            <li data-i18n="about-li3"></li>
+            <li data-i18n="about-li4"></li>
+          </ul>
+        </div>
 
-      <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
-        <div class="card-title" data-i18n="mobile-ads-2-title"></div>
-        <img src="nsport_banner_3.jpg" alt="Nsport – Featured" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
-        <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-2-text"></div>
-      </a>
+        <div class="card">
+          <div class="card-title" data-i18n="about-card2-title"></div>
+          <ul class="list">
+            <li data-i18n="about-li5"></li>
+            <li data-i18n="about-li6"></li>
+            <li data-i18n="about-li7"></li>
+            <li data-i18n="about-li8"></li>
+          </ul>
+        </div>
 
-      <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
-        <div class="card-title" data-i18n="mobile-ads-3-title"></div>
-        <img src="nsport_banner_2.jpg" alt="Nsport – Deals" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
-        <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-3-text"></div>
-      </a>
-    </div>
-  </section>
+        <div class="card">
+          <div class="card-title" data-i18n="about-card3-title"></div>
+          <ul class="list">
+            <li data-i18n="about-li9"></li>
+            <li data-i18n="about-li10"></li>
+            <li data-i18n="about-li11"></li>
+            <li data-i18n="about-li12"></li>
+            <li data-i18n="about-li13"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <footer>
-    <span data-i18n="footer-text"></span>
-    <div class="footer-brand">
-      <img src="nextn_logo.png" alt="NextN-design logó">
-      <span data-i18n="footer-madeby"></span>
-      <a href="https://norby9898.github.io/NextN-Digital" target="_blank" rel="noopener">NextN-design</a>
-    </div>
-  </footer>
+    <!-- HELYSZÍN -->
+    <section id="location">
+      <h2 class="section-title" data-i18n="location-title"></h2>
+      <p class="section-sub" data-i18n="location-sub"></p>
 
-</main>
+      <div class="card">
+        <div class="card-title" data-i18n="location-card-title"></div>
+        <ul class="list">
+          <li data-i18n="location-li1"></li>
+          <li data-i18n="location-li2"></li>
+          <li data-i18n="location-li3"></li>
+          <li data-i18n="location-li4"></li>
+        </ul>
+      </div>
+    </section>
 
-<script>
-let currentLang = 'hu';
+    <!-- KATEGÓRIÁK -->
+    <section id="categories">
+      <h2 class="section-title" data-i18n="categories-title"></h2>
+      <p class="section-sub" data-i18n="categories-sub"></p>
 
-/* ✅ IDE RAKD BE A WORD LETÖLTÉSI LINKET (ha a repóban van, lehet simán a fájlnév) */
-const DOWNLOAD_URL = "IDE_ILLASZD_BE_A_WORD_LINKET.docx"; // <-- ITT CSERÉLD LE!
+      <div class="cat-block">
+        <div class="card-title" style="margin-bottom:2px;" data-i18n="cat-only-title"></div>
+        <div class="section-sub" style="margin:6px 0 0;" data-i18n="cat-only-sub"></div>
 
-function refreshDownloadButton(){
-  document.getElementById("btn-download").setAttribute("href", DOWNLOAD_URL);
-}
+        <div class="cat-group">
+          <h3 data-i18n="u10-title"></h3>
+          <div class="cat-meta" data-i18n="u10-years"></div>
+          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u10-male"></span></div>
+          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u10-female"></span></div>
+          <div class="cat-meta" style="margin-top:10px;" data-i18n="u10-time"></div>
+        </div>
 
-const texts = {
-  hu: {
-    "logo-text": "Nemzetközi Judo Arany Kupa 2026",
-    "nav-about": "Verseny",
-    "nav-location": "Helyszín",
-    "nav-categories": "Kategóriák",
-    "nav-download": "Letöltés",
-    "nav-contact": "Kapcsolat",
+        <div class="cat-group">
+          <h3 data-i18n="u12-title"></h3>
+          <div class="cat-meta" data-i18n="u12-years"></div>
+          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u12-male"></span></div>
+          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u12-female"></span></div>
+          <div class="cat-meta" style="margin-top:10px;" data-i18n="u12-time"></div>
+        </div>
 
-    "hero-title": 'Nemzetközi <span class="accent">Judo Arany Kupa</span> 2026',
-    "hero-sub": "Nemzetközi utánpótlás judo verseny Nagyváradon. <br>Kategóriák, súlycsoportok és letölthető Word lista egy helyen.",
-    "badge1": "Nemzetközi verseny",
-    "badge2": "Nagyvárad (Oradea)",
-    "badge3": "Borș(i) Sportcsarnok",
-    "hero-cta-primary": "📄 Letöltések",
-    "hero-cta-secondary": "🥋 Kategóriák",
+        <div class="cat-group">
+          <h3 data-i18n="u14-title"></h3>
+          <div class="cat-meta" data-i18n="u14-years"></div>
+          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u14-male"></span></div>
+          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u14-female"></span></div>
+          <div class="cat-meta" style="margin-top:10px;" data-i18n="u14-time"></div>
+        </div>
 
-    "preview-logo": "JUDO",
-    "preview-name": "Arany Kupa 2026",
-    "preview-desc": "Info • helyszín • kategóriák • letöltések",
-    "preview-note": "Minden fontos info gyorsan, mobilbarát formában.",
+        <div class="cat-group">
+          <h3 data-i18n="u16-title"></h3>
+          <div class="cat-meta" data-i18n="u16-years"></div>
+          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u16-male"></span></div>
+          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u16-female"></span></div>
+          <div class="cat-meta" style="margin-top:10px;" data-i18n="u16-time"></div>
+        </div>
+      </div>
+    </section>
 
-    "about-title": "Verseny leírás",
-    "about-sub": "Rövid, átlátható összefoglaló a versenyről.",
-    "about-card1-title": "Általános információk",
-    "about-li1": "Nemzetközi judo verseny (klubok, egyesületek részére).",
-    "about-li2": "Cél: sportszerű küzdelem, tapasztalatszerzés.",
-    "about-li3": "Mérlegelés és verseny lebonyolítás a helyszínen.",
-    "about-li4": "Díjazás: a szervezői kiírás szerint.",
-    "about-card2-title": "Részvétel & nevezés",
-    "about-li5": "Nevezés előzetesen a szervezők által megadott módon.",
-    "about-li6": "Pontos adatok: név, klub, kategória.",
-    "about-li7": "Orvosi igazolás / biztosítás a szabályzat szerint.",
-    "about-li8": "A szervezők fenntartják a program módosítás jogát.",
-    "about-card3-title": "Fontos tudnivalók",
-    "about-li9": "Kérjük időben érkezni a mérlegeléshez.",
-    "about-li10": "Felszerelés: judogi (fehér/kék) ajánlott.",
-    "about-li11": "Kijelölt helyek a kísérőknek és nézőknek.",
-    "about-li12": "További infó: Kapcsolat / WhatsApp.",
-    "about-li13": "A sportolókat kísérő tanárok/edzők/hivatalos személyek teljes felelősséggel tartoznak a sportolók viselkedéséért és védelméért a verseny teljes ideje alatt. A szervezők ezért nem tehetők felelőssé; a fő felelősség a kísérő személyzetet terheli.",
+    <!-- LETÖLTÉS -->
+    <section id="download">
+      <h2 class="section-title" data-i18n="download-section-title"></h2>
+      <div class="download-card">
+        <div class="download-title" data-i18n="download-title"></div>
+        <div class="download-sub" data-i18n="download-sub"></div>
+        <a class="btn-primary" id="btn-download" href="#" target="_blank" rel="noopener" data-i18n="download-btn"></a>
+        <div class="hero-note" style="margin-top:10px;" data-i18n="download-note"></div>
+      </div>
+    </section>
 
-    "location-title": "Helyszín",
-    "location-sub": "A verseny Romániában, Nagyváradon kerül megrendezésre.",
-    "location-card-title": "Részletek",
-    "location-li1": "Ország: Románia",
-    "location-li2": "Város: Nagyvárad (Oradea)",
-    "location-li3": "Csarnok: Borș(i) Sportcsarnok",
-    "location-li4": "Megközelítés: autóval és tömegközlekedéssel is könnyen elérhető (parkolás a lehetőségek szerint).",
+    <!-- KAPCSOLAT -->
+    <section id="contact">
+      <h2 class="section-title" data-i18n="contact-title"></h2>
 
-    "categories-title": "Kategóriák",
-    "categories-sub": "Az alábbi korcsoportok, súlycsoportok és küzdelmi idők a megadott kiírás szerint.",
-    "cat-only-title": "Korcsoportok (U10 / U12 / U14 / U16)",
-    "cat-only-sub": "Fiúk/Lányok súlycsoportok + küzdelmi idő (GS).",
-    "male": "Férfi (Fiúk)",
-    "female": "Női (Lányok)",
+      <div class="contact-grid">
+        <div class="contact-text">
+          <p data-i18n="contact-main"></p>
+          <p style="margin-top:10px;" data-i18n="contact-list-intro"></p>
+          <ul class="list">
+            <li data-i18n="contact-li1"></li>
+            <li data-i18n="contact-li2"></li>
+            <li data-i18n="contact-li3"></li>
+          </ul>
+        </div>
 
-    "u10-title": "U10",
-    "u10-years": "Születési év: 2017 / 2018",
-    "u10-male": "-22 kg, 24 kg, -28 kg, -32 kg, 34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, +55 kg.",
-    "u10-female": "-20 kg, 24 kg, -28 kg, -32 kg, 34 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, +52 kg.",
-    "u10-time": "Küzdelmi idő: 2 perc (GS 1 perc)",
+        <div class="contact-box">
+          <div style="font-weight:bold;margin-bottom:6px;" data-i18n="contact-direct"></div>
+          <div class="contact-buttons">
+            <a class="btn-secondary" href="tel:+40740901573" data-i18n="contact-call"></a>
+            <a class="btn-secondary" href="mailto:steliannagy@yahoo.com" data-i18n="contact-email"></a>
+            <a class="btn-primary" href="https://wa.me/40740901573" target="_blank" rel="noopener" data-i18n="contact-whatsapp"></a>
+          </div>
+          <div class="contact-small" data-i18n="contact-langs"></div>
+        </div>
+      </div>
+    </section>
 
-    "u12-title": "U12",
-    "u12-years": "Születési év: 2015 / 2016",
-    "u12-male": "27 kg, -30 kg, -34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-    "u12-female": "25 kg, -28 kg, -32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, 63 kg, +63 kg.",
-    "u12-time": "Küzdelmi idő: 2 perc (GS 1 perc)",
+    <!-- MOBIL: BANNEREK ALUL -->
+    <section class="mobile-banners">
+      <h2 class="section-title" style="font-size:1.2rem;" data-i18n="mobile-ads-title"></h2>
+      <p class="section-sub" style="margin-bottom:12px;" data-i18n="mobile-ads-sub"></p>
 
-    "u14-title": "U14",
-    "u14-years": "Születési év: 2013 / 2014",
-    "u14-male": "34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-    "u14-female": "-28 kg, 32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-    "u14-time": "Küzdelmi idő: 3 perc (GS 1 perc)",
+      <div class="grid-3">
+        <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
+          <div class="card-title" data-i18n="mobile-ads-1-title"></div>
+          <img src="nsport_banner_1.jpg" alt="Nsport – New arrivals" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
+          <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-1-text"></div>
+        </a>
 
-    "u16-title": "U16",
-    "u16-years": "Születési év: 2011 / 2012",
-    "u16-male": "38 kg, 42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, -81 kg, +81 kg.",
-    "u16-female": "-36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-    "u16-time": "Küzdelmi idő: 3 perc (GS 3 perc)",
+        <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
+          <div class="card-title" data-i18n="mobile-ads-2-title"></div>
+          <img src="nsport_banner_3.jpg" alt="Nsport – Featured" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
+          <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-2-text"></div>
+        </a>
 
-    "download-section-title": "Letöltések",
-    "download-title": "Word letöltés – nevezési / ellenőrző lista",
-    "download-sub": "Innen tudod letölteni a Word dokumentumot.",
-    "download-btn": "⬇️ Word lista letöltése",
-    "download-note": "Cseréld ki a DOWNLOAD_URL értékét a valódi linkre.",
+        <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
+          <div class="card-title" data-i18n="mobile-ads-3-title"></div>
+          <img src="nsport_banner_2.jpg" alt="Nsport – Deals" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
+          <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-3-text"></div>
+        </a>
+      </div>
+    </section>
 
-    "contact-title": "Kapcsolat",
-    "contact-main": "Kérdésed van a nevezéssel vagy kategóriákkal kapcsolatban? Írj vagy hívj bátran.",
-    "contact-list-intro": "Hasznos, ha megírod: ",
-    "contact-li1": "klub / egyesület neve;",
-    "contact-li2": "korcsoport és várható létszám;",
-    "contact-li3": "speciális kérés (időpont, mérlegelés stb.).",
-    "contact-direct": "Közvetlen elérhetőségek",
-    "contact-call": "📞 Hívás",
-    "contact-email": "✉️ Email",
-    "contact-whatsapp": "💬 WhatsApp",
-    "contact-langs": "Válaszolunk magyarul, románul és angolul is. 🙂",
+    <footer>
+      <span data-i18n="footer-text"></span>
+      <div class="footer-brand">
+        <img src="nextn-logo.png" alt="NextN-design logó">
+        <span data-i18n="footer-madeby"></span>
+        <a href="https://norby9898.github.io/NextN-Digital" target="_blank" rel="noopener">NextN-design</a>
+      </div>
+    </footer>
 
-    "mobile-ads-title": "Nsport ajánlók",
-    "mobile-ads-sub": "Kiemelt termékek és újdonságok",
-    "mobile-ads-1-title": "Nsport – Újdonságok",
-    "mobile-ads-1-text": "Nézd meg a legújabb sport cuccokat.",
-    "mobile-ads-2-title": "Nsport – Kiemelt termék",
-    "mobile-ads-2-text": "Ruházat & felszerelés egy helyen.",
-    "mobile-ads-3-title": "Nsport – Akciók",
-    "mobile-ads-3-text": "Akciók, csomagok, gyors rendelés.",
+  </main>
 
-    "pc-ads-1-title": "Nsport",
-    "pc-ads-1-text": "Új termékek & akciók",
-    "pc-ads-2-title": "Nsport",
-    "pc-ads-2-text": "Sport cuccok – gyors rendelés",
-    "pc-ads-3-title": "Nsport",
-    "pc-ads-3-text": "Ruházat & felszerelés",
-    "pc-ads-4-title": "Nsport",
-    "pc-ads-4-text": "Kiemelt termékek",
-    "pc-ads-cta": "Megnézem →",
+  <script>
+    let currentLang = 'hu';
 
-    "footer-madeby": "Készítette:",
-    "footer-text": "© 2026 Nemzetközi Judo Arany Kupa – Minden jog fenntartva."
-  },
+    /* ✅ IDE RAKD BE A WORD LETÖLTÉSI LINKET */
+    const DOWNLOAD_URL = "IDE_ILLASZD_BE_A_WORD_LINKET.docx"; // <-- ITT CSERÉLD LE!
 
-  ro: {
-    "logo-text": "Cupa Internațională de Judo Aur” 2026",
-    "nav-about": "Competiție",
-    "nav-location": "Locație",
-    "nav-categories": "Categorii",
-    "nav-download": "Descărcare",
-    "nav-contact": "Contact",
+    function refreshDownloadButton(){
+      document.getElementById("btn-download").setAttribute("href", DOWNLOAD_URL);
+    }
 
-    "hero-title": 'Cupa Internațională <span class="accent">de Judo Aur</span> 2026',
-    "hero-sub": "Competiție internațională de judo la Oradea. <br>Categorii, greutăți și listă Word de descărcat într-un singur loc.",
-    "badge1": "Competiție internațională",
-    "badge2": "Oradea",
-    "badge3": "Sala Sporturilor Borș(i)",
-    "hero-cta-primary": "📄 Descărcări",
-    "hero-cta-secondary": "🥋 Categorii",
+    const texts = {
+      hu: {
+        "logo-text": "Nemzetközi Judo Arany Kupa 2026",
+        "nav-about": "Verseny",
+        "nav-location": "Helyszín",
+        "nav-categories": "Kategóriák",
+        "nav-download": "Letöltés",
+        "nav-contact": "Kapcsolat",
 
-    "preview-logo": "JUDO",
-    "preview-name": "Aur 2026",
-    "preview-desc": "Info • locație • categorii • descărcări",
-    "preview-note": "Totul clar și optimizat pentru mobil.",
+        "hero-title": 'Nemzetközi <span class="accent">Judo Arany Kupa</span> 2026',
+        "hero-sub": "Nemzetközi Cselgáncs verseny Nagyváradon. <br>Kategóriák, súlycsoportok és letölthető Word lista egy helyen.",
+        "badge1": "Nemzetközi verseny",
+        "badge2": "Nagyvárad (Oradea)",
+        "badge3": "Borș(i) Sportcsarnok",
+        "hero-cta-primary": "📄 Letöltések",
+        "hero-cta-secondary": "🥋 Kategóriák",
 
-    "about-title": "Descrierea competiției",
-    "about-sub": "Prezentare scurtă și clară despre competiție.",
-    "about-card1-title": "Informații generale",
-    "about-li1": "Competiție internațională de judo (cluburi / asociații).",
-    "about-li2": "Scop: fair-play, experiență, dezvoltare sportivă.",
-    "about-li3": "Cântar + desfășurare la locație.",
-    "about-li4": "Premiere: conform regulamentului.",
-    "about-card2-title": "Participare & înscriere",
-    "about-li5": "Înscriere în avans, conform instrucțiunilor organizatorilor.",
-    "about-li6": "Date corecte: nume, club, categorie.",
-    "about-li7": "Adeverință medicală / asigurare conform regulilor.",
-    "about-li8": "Organizatorii pot modifica programul dacă este necesar.",
-    "about-card3-title": "Informații importante",
-    "about-li9": "Vă rugăm să ajungeți din timp pentru cântar.",
-    "about-li10": "Echipament: judogi (alb/albastru) recomandat.",
-    "about-li11": "Zone dedicate pentru spectatori și însoțitori.",
-    "about-li12": "Info suplimentar: secțiunea Contact / WhatsApp.",
-    "about-li13": "Profesorii, antrenorii și oficialii care însoțesc sportivii sunt direct răspunzători de comportamentul și protecția acestora pe tot parcursul desfășurării competiției. Organizatorii nu pot fi făcuți răspunzători pentru aceste aspecte, deoarece responsabilitatea principală revine personalului însoțitor.",
+        "preview-logo": "JUDO",
+        "preview-name": "Arany Kupa 2026",
+        "preview-desc": "Info • helyszín • kategóriák • letöltések",
+        "preview-note": "Minden fontos info gyorsan, mobilbarát formában.",
 
-    "location-title": "Locație",
-    "location-sub": "Competiția are loc în România, la Oradea.",
-    "location-card-title": "Detalii",
-    "location-li1": "Țară: România",
-    "location-li2": "Oraș: Oradea",
-    "location-li3": "Sală: Sala Sporturilor Borș(i)",
-    "location-li4": "Acces: ușor cu mașina și transport public (parcare în limita locurilor disponibile).",
+        "about-title": "Verseny leírás",
+        "about-sub": "Rövid, átlátható összefoglaló a versenyről.",
+        "about-card1-title": "Általános információk",
+        "about-li1": "Nemzetközi judo verseny (klubok, egyesületek részére).",
+        "about-li2": "Cél: sportszerű küzdelem, tapasztalatszerzés.",
+        "about-li3": "Mérlegelés és verseny lebonyolítás a helyszínen.",
+        "about-li4": "Díjazás: a szervezői kiírás szerint.",
+        "about-card2-title": "Részvétel & nevezés",
+        "about-li5": "Nevezés előzetesen a szervezők által megadott módon.",
+        "about-li6": "Pontos adatok: név, klub, kategória.",
+        "about-li7": "Orvosi igazolás / biztosítás a szabályzat szerint.",
+        "about-li8": "A szervezők fenntartják a program módosítás jogát.",
+        "about-card3-title": "Fontos tudnivalók",
+        "about-li9": "Kérjük időben érkezni a mérlegeléshez.",
+        "about-li10": "Felszerelés: judogi (fehér/kék) ajánlott.",
+        "about-li11": "Kijelölt helyek a kísérőknek és nézőknek.",
+        "about-li12": "További infó: Kapcsolat / WhatsApp.",
+        "about-li13": "A sportolókat kísérő tanárok/edzők/hivatalos személyek teljes felelősséggel tartoznak a sportolók viselkedéséért és védelméért a verseny teljes ideje alatt. A szervezők ezért nem tehetők felelőssé; a fő felelősség a kísérő személyzetet terheli.",
 
-    "categories-title": "Categorii",
-    "categories-sub": "Mai jos sunt grupele de vârstă, categoriile de greutate și durata luptei conform datelor primite.",
-    "cat-only-title": "Grupe de vârstă (U10 / U12 / U14 / U16)",
-    "cat-only-sub": "Masculin/Feminin + greutăți + timp de luptă (GS).",
-    "male": "Masculin",
-    "female": "Feminin",
+        "location-title": "Helyszín",
+        "location-sub": "A verseny Romániában, Nagyváradon kerül megrendezésre.",
+        "location-card-title": "Részletek",
+        "location-li1": "Ország: Románia",
+        "location-li2": "Város: Nagyvárad (Oradea)",
+        "location-li3": "Csarnok: Borș(i) Sportcsarnok",
+        "location-li4": "Megközelítés: autóval és tömegközlekedéssel is könnyen elérhető (parkolás a lehetőségek szerint).",
 
-    "u10-title": "U10",
-    "u10-years": "Ani naștere: 2017 / 2018",
-    "u10-male": "-22 kg, 24 kg, -28 kg, -32 kg, 34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, +55 kg.",
-    "u10-female": "-20 kg, 24 kg, -28 kg, -32 kg, 34 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, +52 kg.",
-    "u10-time": "Timp de luptă: 2 minute (GS 1 min.)",
+        "categories-title": "Kategóriák",
+        "categories-sub": "Az alábbi korcsoportok, súlycsoportok és küzdelmi idők a megadott kiírás szerint.",
+        "cat-only-title": "Korcsoportok (U10 / U12 / U14 / U16)",
+        "cat-only-sub": "Fiúk/Lányok súlycsoportok + küzdelmi idő (GS).",
+        "male": "Férfi (Fiúk)",
+        "female": "Női (Lányok)",
 
-    "u12-title": "U12",
-    "u12-years": "Ani naștere: 2015 / 2016",
-    "u12-male": "27 kg, -30 kg, -34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-    "u12-female": "25 kg, -28 kg, -32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, 63 kg, +63 kg.",
-    "u12-time": "Timp de luptă: 2 minute (GS 1 min.)",
+        "u10-title": "U10",
+        "u10-years": "Születési év: 2017 / 2018",
+        "u10-male": "-22 kg, 24 kg, -28 kg, -32 kg, 34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, +55 kg.",
+        "u10-female": "-20 kg, 24 kg, -28 kg, -32 kg, 34 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, +52 kg.",
+        "u10-time": "Küzdelmi idő: 2 perc (GS 1 perc)",
 
-    "u14-title": "U14",
-    "u14-years": "Ani naștere: 2013 / 2014",
-    "u14-male": "34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-    "u14-female": "-28 kg, 32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-    "u14-time": "Timp de luptă: 3 minute (GS 1 min.)",
+        "u12-title": "U12",
+        "u12-years": "Születési év: 2015 / 2016",
+        "u12-male": "27 kg, -30 kg, -34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
+        "u12-female": "25 kg, -28 kg, -32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, 63 kg, +63 kg.",
+        "u12-time": "Küzdelmi idő: 2 perc (GS 1 perc)",
 
-    "u16-title": "U16",
-    "u16-years": "Ani naștere: 2011 / 2012",
-    "u16-male": "38 kg, 42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, -81 kg, +81 kg.",
-    "u16-female": "-36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-    "u16-time": "Timp de luptă: 3 minute (GS 3 min.)",
+        "u14-title": "U14",
+        "u14-years": "Születési év: 2013 / 2014",
+        "u14-male": "34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
+        "u14-female": "-28 kg, 32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
+        "u14-time": "Küzdelmi idő: 3 perc (GS 1 perc)",
 
-    "download-section-title": "Descărcări",
-    "download-title": "Descărcare Word – listă înscriere / verificare",
-    "download-sub": "Descarcă documentul Word.",
-    "download-btn": "⬇️ Descarcă lista Word",
-    "download-note": "Înlocuiește valoarea DOWNLOAD_URL cu link-ul real.",
+        "u16-title": "U16",
+        "u16-years": "Születési év: 2011 / 2012",
+        "u16-male": "38 kg, 42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, -81 kg, +81 kg.",
+        "u16-female": "-36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
+        "u16-time": "Küzdelmi idő: 3 perc (GS 3 perc)",
 
-    "contact-title": "Contact",
-    "contact-main": "Întrebări despre înscriere sau categorii? Scrie-mi sau sună cu încredere.",
-    "contact-list-intro": "Este util dacă menționezi: ",
-    "contact-li1": "clubul / asociația;",
-    "contact-li2": "categoria și numărul estimat de sportivi;",
-    "contact-li3": "orice solicitare specială (program, cântar etc.).",
-    "contact-direct": "Date de contact",
-    "contact-call": "📞 Sună",
-    "contact-email": "✉️ Email",
-    "contact-whatsapp": "💬 WhatsApp",
-    "contact-langs": "Răspundem în maghiară, română și engleză. 🙂",
+        "download-section-title": "Letöltések",
+        "download-title": "Word letöltés – nevezési / ellenőrző lista",
+        "download-sub": "Innen tudod letölteni a Word dokumentumot.",
+        "download-btn": "⬇️ Word lista letöltése",
+        "download-note": "Cseréld ki a DOWNLOAD_URL értékét a valódi linkre.",
 
-    "mobile-ads-title": "Recomandări Nsport",
-    "mobile-ads-sub": "Produse evidențiate și noutăți",
-    "mobile-ads-1-title": "Nsport – Noutăți",
-    "mobile-ads-1-text": "Vezi cele mai noi produse sport.",
-    "mobile-ads-2-title": "Nsport – Produs recomandat",
-    "mobile-ads-2-text": "Îmbrăcăminte & echipament într-un singur loc.",
-    "mobile-ads-3-title": "Nsport – Oferte",
-    "mobile-ads-3-text": "Promoții, pachete, comandă rapidă.",
+        "contact-title": "Kapcsolat",
+        "contact-main": "Kérdésed van a nevezéssel vagy kategóriákkal kapcsolatban? Írj vagy hívj bátran.",
+        "contact-list-intro": "Hasznos, ha megírod: ",
+        "contact-li1": "klub / egyesület neve;",
+        "contact-li2": "korcsoport és várható létszám;",
+        "contact-li3": "speciális kérés (időpont, mérlegelés stb.).",
+        "contact-direct": "Közvetlen elérhetőségek",
+        "contact-call": "📞 Hívás",
+        "contact-email": "✉️ Email",
+        "contact-whatsapp": "💬 WhatsApp",
+        "contact-langs": "Válaszolunk magyarul, románul és angolul is. 🙂",
 
-    "pc-ads-1-title": "Nsport",
-    "pc-ads-1-text": "Produse noi & promoții",
-    "pc-ads-2-title": "Nsport",
-    "pc-ads-2-text": "Echipament sport – comandă rapidă",
-    "pc-ads-3-title": "Nsport",
-    "pc-ads-3-text": "Îmbrăcăminte & echipament",
-    "pc-ads-4-title": "Nsport",
-    "pc-ads-4-text": "Produse evidențiate",
-    "pc-ads-cta": "Vezi →",
+        "mobile-ads-title": "Nsport ajánlók",
+        "mobile-ads-sub": "Kiemelt termékek és újdonságok",
+        "mobile-ads-1-title": "Nsport – Újdonságok",
+        "mobile-ads-1-text": "Nézd meg a legújabb sport cuccokat.",
+        "mobile-ads-2-title": "Nsport – Kiemelt termék",
+        "mobile-ads-2-text": "Ruházat & felszerelés egy helyen.",
+        "mobile-ads-3-title": "Nsport – Akciók",
+        "mobile-ads-3-text": "Akciók, csomagok, gyors rendelés.",
 
-    "footer-madeby": "Creat de:",
-    "footer-text": "© 2026 Cupa Internațională de Judo Aur – Toate drepturile rezervate."
-  },
+        "pc-ads-1-title": "Nsport",
+        "pc-ads-1-text": "Új termékek & akciók",
+        "pc-ads-2-title": "Nsport",
+        "pc-ads-2-text": "Sport cuccok – gyors rendelés",
+        "pc-ads-3-title": "Nsport",
+        "pc-ads-3-text": "Ruházat & felszerelés",
+        "pc-ads-4-title": "Nsport",
+        "pc-ads-4-text": "Kiemelt termékek",
+        "pc-ads-cta": "Megnézem →",
 
-  en: {
-    "logo-text": "International Judo Golden Cup 2026",
-    "nav-about": "Event",
-    "nav-location": "Venue",
-    "nav-categories": "Categories",
-    "nav-download": "Download",
-    "nav-contact": "Contact",
+        "footer-madeby": "Készítette:",
+        "footer-text": "© 2026 Nemzetközi Judo Arany Kupa – Minden jog fenntartva."
+      },
 
-    "hero-title": 'International <span class="accent">Judo Golden Cup</span> 2026',
-    "hero-sub": "International judo tournament in Oradea, Romania. <br>Age groups, weight categories and a downloadable Word list in one place.",
-    "badge1": "International tournament",
-    "badge2": "Oradea, Romania",
-    "badge3": "Borș(i) Sports Hall",
-    "hero-cta-primary": "📄 Downloads",
-    "hero-cta-secondary": "🥋 Categories",
+      ro: {
+        "logo-text": "Concurs internațional de judo – Cupa de Aur 2026",
+        "nav-about": "Competiție",
+        "nav-location": "Locație",
+        "nav-categories": "Categorii",
+        "nav-download": "Descărcare",
+        "nav-contact": "Contact",
 
-    "preview-logo": "JUDO",
-    "preview-name": "Golden Cup 2026",
-    "preview-desc": "Info • venue • categories • downloads",
-    "preview-note": "All key info in a clean mobile-friendly layout.",
+        "hero-title": 'Concurs <span class="accent">internațional de judo</span> – Cupa de Aur 2026',
+        "hero-sub": "Competiție internațională de judo la Oradea. <br>Categorii, greutăți și listă Word de descărcat într-un singur loc.",
+        "badge1": "Competiție internațională",
+        "badge2": "Oradea",
+        "badge3": "Sala Sporturilor Borș(i)",
+        "hero-cta-primary": "📄 Descărcări",
+        "hero-cta-secondary": "🥋 Categorii",
 
-    "about-title": "Tournament overview",
-    "about-sub": "A short and clear overview of the event.",
-    "about-card1-title": "General info",
-    "about-li1": "International judo tournament (clubs / associations).",
-    "about-li2": "Goal: fair play, experience and development.",
-    "about-li3": "Weigh-in and competition held at the venue.",
-    "about-li4": "Awards: according to the official bulletin.",
-    "about-card2-title": "Entry & registration",
-    "about-li5": "Pre-registration according to organizer instructions.",
-    "about-li6": "Provide accurate details: name, club, category.",
-    "about-li7": "Medical clearance / insurance as required by rules.",
-    "about-li8": "Organizers may adjust schedule if needed.",
-    "about-card3-title": "Important information",
-    "about-li9": "Please arrive early for weigh-in.",
-    "about-li10": "Equipment: judogi (white/blue) recommended.",
-    "about-li11": "Designated areas for spectators and companions.",
-    "about-li12": "More info: Contact section / WhatsApp.",
-    "about-li13": "Teachers, coaches and officials accompanying the athletes are directly responsible for their behavior and protection throughout the entire competition. The organizers cannot be held liable for these aspects, as the primary responsibility lies with the accompanying staff.",
+        "preview-logo": "JUDO",
+        "preview-name": "Cupa de Aur 2026",
+        "preview-desc": "Info • locație • categorii • descărcări",
+        "preview-note": "Totul clar și optimizat pentru mobil.",
 
-    "location-title": "Venue",
-    "location-sub": "The event takes place in Romania, in Oradea.",
-    "location-card-title": "Details",
-    "location-li1": "Country: Romania",
-    "location-li2": "City: Oradea",
-    "location-li3": "Hall: Borș(i) Sports Hall",
-    "location-li4": "Access: easy by car and public transport (parking subject to availability).",
+        "about-title": "Descrierea competiției",
+        "about-sub": "Prezentare scurtă și clară despre competiție.",
+        "about-card1-title": "Informații generale",
+        "about-li1": "Competiție internațională de judo (cluburi / asociații).",
+        "about-li2": "Scop: fair-play, experiență, dezvoltare sportivă.",
+        "about-li3": "Cântar + desfășurare la locație.",
+        "about-li4": "Premiere: conform regulamentului.",
+        "about-card2-title": "Participare & înscriere",
+        "about-li5": "Înscriere în avans, conform instrucțiunilor organizatorilor.",
+        "about-li6": "Date corecte: nume, club, categorie.",
+        "about-li7": "Adeverință medicală / asigurare conform regulilor.",
+        "about-li8": "Organizatorii pot modifica programul dacă este necesar.",
+        "about-card3-title": "Informații importante",
+        "about-li9": "Vă rugăm să ajungeți din timp pentru cântar.",
+        "about-li10": "Echipament: judogi (alb/albastru) recomandat.",
+        "about-li11": "Zone dedicate pentru spectatori și însoțitori.",
+        "about-li12": "Info suplimentar: secțiunea Contact / WhatsApp.",
+        "about-li13": "Profesorii, antrenorii și oficialii care însoțesc sportivii sunt direct răspunzători de comportamentul și protecția acestora pe tot parcursul desfășurării competiției. Organizatorii nu pot fi făcuți răspunzători pentru aceste aspecte, deoarece responsabilitatea principală revine personalului însoțitor.",
 
-    "categories-title": "Categories",
-    "categories-sub": "Below are the age groups, weight categories and fight times as provided.",
-    "cat-only-title": "Age groups (U10 / U12 / U14 / U16)",
-    "cat-only-sub": "Male/Female weight classes + fight time (GS).",
-    "male": "Male",
-    "female": "Female",
+        "location-title": "Locație",
+        "location-sub": "Competiția are loc în România, la Oradea.",
+        "location-card-title": "Detalii",
+        "location-li1": "Țară: România",
+        "location-li2": "Oraș: Oradea",
+        "location-li3": "Sală: Sala Sporturilor Borș(i)",
+        "location-li4": "Acces: ușor cu mașina și transport public (parcare în limita locurilor disponibile).",
 
-    "u10-title": "U10",
-    "u10-years": "Birth years: 2017 / 2018",
-    "u10-male": "-22 kg, 24 kg, -28 kg, -32 kg, 34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, +55 kg.",
-    "u10-female": "-20 kg, 24 kg, -28 kg, -32 kg, 34 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, +52 kg.",
-    "u10-time": "Fight time: 2 minutes (GS 1 min.)",
+        "categories-title": "Categorii",
+        "categories-sub": "Mai jos sunt grupele de vârstă, categoriile de greutate și durata luptei conform datelor primite.",
+        "cat-only-title": "Grupe de vârstă (U10 / U12 / U14 / U16)",
+        "cat-only-sub": "Masculin/Feminin + greutăți + timp de luptă (GS).",
+        "male": "Masculin",
+        "female": "Feminin",
 
-    "u12-title": "U12",
-    "u12-years": "Birth years: 2015 / 2016",
-    "u12-male": "27 kg, -30 kg, -34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-    "u12-female": "25 kg, -28 kg, -32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, 63 kg, +63 kg.",
-    "u12-time": "Fight time: 2 minutes (GS 1 min.)",
+        "u10-title": "U10",
+        "u10-years": "Ani naștere: 2017 / 2018",
+        "u10-male": "-22 kg, 24 kg, -28 kg, -32 kg, 34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, +55 kg.",
+        "u10-female": "-20 kg, 24 kg, -28 kg, -32 kg, 34 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, +52 kg.",
+        "u10-time": "Timp de luptă: 2 minute (GS 1 min.)",
 
-    "u14-title": "U14",
-    "u14-years": "Birth years: 2013 / 2014",
-    "u14-male": "34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-    "u14-female": "-28 kg, 32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-    "u14-time": "Fight time: 3 minutes (GS 1 min.)",
+        "u12-title": "U12",
+        "u12-years": "Ani naștere: 2015 / 2016",
+        "u12-male": "27 kg, -30 kg, -34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
+        "u12-female": "25 kg, -28 kg, -32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, 63 kg, +63 kg.",
+        "u12-time": "Timp de luptă: 2 minute (GS 1 min.)",
 
-    "u16-title": "U16",
-    "u16-years": "Birth years: 2011 / 2012",
-    "u16-male": "38 kg, 42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, -81 kg, +81 kg.",
-    "u16-female": "-36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-    "u16-time": "Fight time: 3 minutes (GS 3 min.)",
+        "u14-title": "U14",
+        "u14-years": "Ani naștere: 2013 / 2014",
+        "u14-male": "34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
+        "u14-female": "-28 kg, 32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
+        "u14-time": "Timp de luptă: 3 minute (GS 1 min.)",
 
-    "download-section-title": "Downloads",
-    "download-title": "Word download – entry / check list",
-    "download-sub": "Download the Word document here.",
-    "download-btn": "⬇️ Download Word list",
-    "download-note": "Replace DOWNLOAD_URL with the real file link.",
+        "u16-title": "U16",
+        "u16-years": "Ani naștere: 2011 / 2012",
+        "u16-male": "38 kg, 42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, -81 kg, +81 kg.",
+        "u16-female": "-36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
+        "u16-time": "Timp de luptă: 3 minute (GS 3 min.)",
 
-    "contact-title": "Contact",
-    "contact-main": "Questions about registration or categories? Message or call anytime.",
-    "contact-list-intro": "Helpful details to include: ",
-    "contact-li1": "club / association name;",
-    "contact-li2": "category and expected number of athletes;",
-    "contact-li3": "any special request (schedule, weigh-in, etc.).",
-    "contact-direct": "Direct contacts",
-    "contact-call": "📞 Call",
-    "contact-email": "✉️ Email",
-    "contact-whatsapp": "💬 WhatsApp",
-    "contact-langs": "We can reply in Hungarian, Romanian and English. 🙂",
+        "download-section-title": "Descărcări",
+        "download-title": "Descărcare Word – listă înscriere / verificare",
+        "download-sub": "Descarcă documentul Word.",
+        "download-btn": "⬇️ Descarcă lista Word",
+        "download-note": "Înlocuiește valoarea DOWNLOAD_URL cu link-ul real.",
 
-    "mobile-ads-title": "Nsport picks",
-    "mobile-ads-sub": "Featured products and new arrivals",
-    "mobile-ads-1-title": "Nsport – New arrivals",
-    "mobile-ads-1-text": "Check out the latest sports gear.",
-    "mobile-ads-2-title": "Nsport – Featured item",
-    "mobile-ads-2-text": "Apparel & equipment in one place.",
-    "mobile-ads-3-title": "Nsport – Deals",
-    "mobile-ads-3-text": "Promos, bundles, quick order.",
+        "contact-title": "Contact",
+        "contact-main": "Întrebări despre înscriere sau categorii? Scrie-mi sau sună cu încredere.",
+        "contact-list-intro": "Este util dacă menționezi: ",
+        "contact-li1": "clubul / asociația;",
+        "contact-li2": "categoria și numărul estimat de sportivi;",
+        "contact-li3": "orice solicitare specială (program, cântar etc.).",
+        "contact-direct": "Date de contact",
+        "contact-call": "📞 Sună",
+        "contact-email": "✉️ Email",
+        "contact-whatsapp": "💬 WhatsApp",
+        "contact-langs": "Răspundem în maghiară, română și engleză. 🙂",
 
-    "pc-ads-1-title": "Nsport",
-    "pc-ads-1-text": "New arrivals & deals",
-    "pc-ads-2-title": "Nsport",
-    "pc-ads-2-text": "Sports gear – quick order",
-    "pc-ads-3-title": "Nsport",
-    "pc-ads-3-text": "Apparel & equipment",
-    "pc-ads-4-title": "Nsport",
-    "pc-ads-4-text": "Featured products",
-    "pc-ads-cta": "View →",
+        "mobile-ads-title": "Recomandări Nsport",
+        "mobile-ads-sub": "Produse evidențiate și noutăți",
+        "mobile-ads-1-title": "Nsport – Noutăți",
+        "mobile-ads-1-text": "Vezi cele mai noi produse sport.",
+        "mobile-ads-2-title": "Nsport – Produs recomandat",
+        "mobile-ads-2-text": "Îmbrăcăminte & echipament într-un singur loc.",
+        "mobile-ads-3-title": "Nsport – Oferte",
+        "mobile-ads-3-text": "Promoții, pachete, comandă rapidă.",
 
-    "footer-madeby": "Made by:",
-    "footer-text": "© 2026 International Judo Golden Cup – All rights reserved."
-  }
-};
+        "pc-ads-1-title": "Nsport",
+        "pc-ads-1-text": "Produse noi & promoții",
+        "pc-ads-2-title": "Nsport",
+        "pc-ads-2-text": "Echipament sport – comandă rapidă",
+        "pc-ads-3-title": "Nsport",
+        "pc-ads-3-text": "Îmbrăcăminte & echipament",
+        "pc-ads-4-title": "Nsport",
+        "pc-ads-4-text": "Produse evidențiate",
+        "pc-ads-cta": "Vezi →",
 
-function setLanguage(lang) {
-  const map = texts[lang];
-  if (!map) return;
+        "footer-madeby": "Creat de:",
+        "footer-text": "© 2026 Concurs internațional de judo – Cupa de Aur – Toate drepturile rezervate."
+      },
 
-  currentLang = lang;
-  document.documentElement.lang = lang;
+      en: {
+        "logo-text": "International Judo Tournament – Gold Cup 2026",
+        "nav-about": "Event",
+        "nav-location": "Venue",
+        "nav-categories": "Categories",
+        "nav-download": "Download",
+        "nav-contact": "Contact",
 
-  for (const key in map) {
-    const el = document.querySelector('[data-i18n="'+key+'"]');
-    if (el) el.innerHTML = map[key];
-  }
+        "hero-title": 'International <span class="accent">Judo Tournament</span> – Gold Cup 2026',
+        "hero-sub": "International judo tournament in Oradea, Romania. <br>Age groups, weight categories and a downloadable Word list in one place.",
+        "badge1": "International tournament",
+        "badge2": "Oradea, Romania",
+        "badge3": "Borș(i) Sports Hall",
+        "hero-cta-primary": "📄 Downloads",
+        "hero-cta-secondary": "🥋 Categories",
 
-  document.getElementById('btn-hu').classList.toggle('active', lang === 'hu');
-  document.getElementById('btn-ro').classList.toggle('active', lang === 'ro');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        "preview-logo": "JUDO",
+        "preview-name": "Gold Cup 2026",
+        "preview-desc": "Info • venue • categories • downloads",
+        "preview-note": "All key info in a clean mobile-friendly layout.",
 
-  refreshDownloadButton();
-}
+        "about-title": "Tournament overview",
+        "about-sub": "A short and clear overview of the event.",
+        "about-card1-title": "General info",
+        "about-li1": "International judo tournament (clubs / associations).",
+        "about-li2": "Goal: fair play, experience and development.",
+        "about-li3": "Weigh-in and competition held at the venue.",
+        "about-li4": "Awards: according to the official bulletin.",
+        "about-card2-title": "Entry & registration",
+        "about-li5": "Pre-registration according to organizer instructions.",
+        "about-li6": "Provide accurate details: name, club, category.",
+        "about-li7": "Medical clearance / insurance as required by rules.",
+        "about-li8": "Organizers may adjust schedule if needed.",
+        "about-card3-title": "Important information",
+        "about-li9": "Please arrive early for weigh-in.",
+        "about-li10": "Equipment: judogi (white/blue) recommended.",
+        "about-li11": "Designated areas for spectators and companions.",
+        "about-li12": "More info: Contact section / WhatsApp.",
+        "about-li13": "Teachers, coaches and officials accompanying the athletes are directly responsible for their behavior and protection throughout the entire competition. The organizers cannot be held liable for these aspects, as the primary responsibility lies with the accompanying staff.",
 
-setLanguage('hu');
-document.getElementById('btn-hu').addEventListener('click', () => setLanguage('hu'));
-document.getElementById('btn-ro').addEventListener('click', () => setLanguage('ro'));
-document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
-</script>
+        "location-title": "Venue",
+        "location-sub": "The event takes place in Romania, in Oradea.",
+        "location-card-title": "Details",
+        "location-li1": "Country: Romania",
+        "location-li2": "City: Oradea",
+        "location-li3": "Hall: Borș(i) Sports Hall",
+        "location-li4": "Access: easy by car and public transport (parking subject to availability).",
+
+        "categories-title": "Categories",
+        "categories-sub": "Below are the age groups, weight categories and fight times as provided.",
+        "cat-only-title": "Age groups (U10 / U12 / U14 / U16)",
+        "cat-only-sub": "Male/Female weight classes + fight time (GS).",
+        "male": "Male",
+        "female": "Female",
+
+        "u10-title": "U10",
+        "u10-years": "Birth years: 2017 / 2018",
+        "u10-male": "-22 kg, 24 kg, -28 kg, -32 kg, 34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, +55 kg.",
+        "u10-female": "-20 kg, 24 kg, -28 kg, -32 kg, 34 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, +52 kg.",
+        "u10-time": "Fight time: 2 minutes (GS 1 min.)",
+
+        "u12-title": "U12",
+        "u12-years": "Birth years: 2015 / 2016",
+        "u12-male": "27 kg, -30 kg, -34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
+        "u12-female": "25 kg, -28 kg, -32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, 63 kg, +63 kg.",
+        "u12-time": "Fight time: 2 minutes (GS 1 min.)",
+
+        "u14-title": "U14",
+        "u14-years": "Birth years: 2013 / 2014",
+        "u14-male": "34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
+        "u14-female": "-28 kg, 32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
+        "u14-time": "Fight time: 3 minutes (GS 1 min.)",
+
+        "u16-title": "U16",
+        "u16-years": "Birth years: 2011 / 2012",
+        "u16-male": "38 kg, 42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, -81 kg, +81 kg.",
+        "u16-female": "-36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
+        "u16-time": "Fight time: 3 minutes (GS 3 min.)",
+
+        "download-section-title": "Downloads",
+        "download-title": "Word download – entry / check list",
+        "download-sub": "Download the Word document here.",
+        "download-btn": "⬇️ Download Word list",
+        "download-note": "Replace DOWNLOAD_URL with the real file link.",
+
+        "contact-title": "Contact",
+        "contact-main": "Questions about registration or categories? Message or call anytime.",
+        "contact-list-intro": "Helpful details to include: ",
+        "contact-li1": "club / association name;",
+        "contact-li2": "category and expected number of athletes;",
+        "contact-li3": "any special request (schedule, weigh-in, etc.).",
+        "contact-direct": "Direct contacts",
+        "contact-call": "📞 Call",
+        "contact-email": "✉️ Email",
+        "contact-whatsapp": "💬 WhatsApp",
+        "contact-langs": "We can reply in Hungarian, Romanian and English. 🙂",
+
+        "mobile-ads-title": "Nsport picks",
+        "mobile-ads-sub": "Featured products and new arrivals",
+        "mobile-ads-1-title": "Nsport – New arrivals",
+        "mobile-ads-1-text": "Check out the latest sports gear.",
+        "mobile-ads-2-title": "Nsport – Featured item",
+        "mobile-ads-2-text": "Apparel & equipment in one place.",
+        "mobile-ads-3-title": "Nsport – Deals",
+        "mobile-ads-3-text": "Promos, bundles, quick order.",
+
+        "pc-ads-1-title": "Nsport",
+        "pc-ads-1-text": "New arrivals & deals",
+        "pc-ads-2-title": "Nsport",
+        "pc-ads-2-text": "Sports gear – quick order",
+        "pc-ads-3-title": "Nsport",
+        "pc-ads-3-text": "Apparel & equipment",
+        "pc-ads-4-title": "Nsport",
+        "pc-ads-4-text": "Featured products",
+        "pc-ads-cta": "View →",
+
+        "footer-madeby": "Made by:",
+        "footer-text": "© 2026 International Judo Tournament – Golden Cup – All rights reserved."
+      }
+    };
+
+    function setLanguage(lang) {
+      const map = texts[lang];
+      if (!map) return;
+
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      for (const key in map) {
+        const el = document.querySelector('[data-i18n="'+key+'"]');
+        if (el) el.innerHTML = map[key];
+      }
+
+      document.getElementById('btn-hu').classList.toggle('active', lang === 'hu');
+      document.getElementById('btn-ro').classList.toggle('active', lang === 'ro');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      refreshDownloadButton();
+    }
+
+    setLanguage('hu');
+    document.getElementById('btn-hu').addEventListener('click', () => setLanguage('hu'));
+    document.getElementById('btn-ro').addEventListener('click', () => setLanguage('ro'));
+    document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
+  </script>
 </body>
 </html>
