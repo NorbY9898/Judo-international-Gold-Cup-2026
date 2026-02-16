@@ -191,6 +191,7 @@
       border:1px solid rgba(255,215,0,0.65);
       box-shadow:0 0 16px rgba(0,0,0,0.9), 0 0 18px rgba(255,215,0,0.2);
       padding:16px;
+      margin-bottom:16px;
     }
     .cat-group{
       border:1px solid rgba(255,215,0,0.25);
@@ -203,6 +204,25 @@
     .cat-meta{ font-size:0.85rem; color:#cfcfcf; margin-bottom:10px; }
     .cat-sex{ margin-top:8px; font-size:0.88rem; color:#e6e6e6; line-height:1.55; }
     .cat-sex strong{ color:#FFD700; }
+
+    /* ✅ PIROS, VASTAG INFÓ (U6–U8) */
+    .u6u8-note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,59,59,0.55);
+      background:rgba(25,0,0,0.45);
+      box-shadow:0 0 14px rgba(0,0,0,0.65);
+    }
+    .u6u8-note strong{
+      color:#ff3b3b;
+      font-weight:900;
+      letter-spacing:0.2px;
+      text-shadow:0 0 10px rgba(255,59,59,0.35);
+      display:block;
+      line-height:1.35;
+      font-size:0.92rem;
+    }
 
     /* Download */
     .download-card{
@@ -457,9 +477,15 @@
       <h2 class="section-title" data-i18n="categories-title"></h2>
       <p class="section-sub" data-i18n="categories-sub"></p>
 
+      <!-- ✅ ÚJ: U6–U8 KÜLÖN RUBRIKA -->
       <div class="cat-block">
-        <div class="card-title" style="margin-bottom:2px;" data-i18n="cat-only-title"></div>
-        <div class="section-sub" style="margin:6px 0 0;" data-i18n="cat-only-sub"></div>
+        <div class="card-title" style="margin-bottom:2px;" data-i18n="cat-u6u8-title"></div>
+        <div class="section-sub" style="margin:6px 0 0;" data-i18n="cat-u6u8-sub"></div>
+
+        <!-- ✅ PIROS, VASTAG EXTRA INFÓ (3 nyelven i18n) -->
+        <div class="u6u8-note">
+          <strong data-i18n="u6u8-extra"></strong>
+        </div>
 
         <div class="cat-group">
           <h3 data-i18n="u6-title"></h3>
@@ -476,6 +502,12 @@
           <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u8-female"></span></div>
           <div class="cat-meta" style="margin-top:10px;" data-i18n="u8-time"></div>
         </div>
+      </div>
+
+      <!-- ✅ MARADÓ KATEGÓRIÁK (U10–U16) -->
+      <div class="cat-block">
+        <div class="card-title" style="margin-bottom:2px;" data-i18n="cat-u10u16-title"></div>
+        <div class="section-sub" style="margin:6px 0 0;" data-i18n="cat-u10u16-sub"></div>
 
         <div class="cat-group">
           <h3 data-i18n="u10-title"></h3>
@@ -608,13 +640,13 @@
     const U10_MALE   = "-22 kg, 24 kg, -28 kg, -32 kg, 34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, +55 kg.";
     const U10_FEMALE = "-20 kg, 24 kg, -28 kg, -32 kg, 34 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, +52 kg.";
 
-    const U6_TIME_HU  = "Küzdelmi idő: 2 perc (GS 1 perc)";
-    const U6_TIME_RO  = "Timp de luptă: 2 minute (GS 1 min.)";
-    const U6_TIME_EN  = "Fight time: 2 minutes (GS 1 min.)";
+    const U6_TIME_HU  = "Küzdelmi idő: NE-WAZA";
+    const U6_TIME_RO  = "Timp de luptă: NE-WAZA ";
+    const U6_TIME_EN  = "Fight time: NE-WAZA";
 
-    const U8_TIME_HU  = "Küzdelmi idő: 2 perc (GS 1 perc)";
-    const U8_TIME_RO  = "Timp de luptă: 2 minute (GS 1 min.)";
-    const U8_TIME_EN  = "Fight time: 2 minutes (GS 1 min.)";
+    const U8_TIME_HU  = "Küzdelmi idő: NE-WAZA";
+    const U8_TIME_RO  = "Timp de luptă: NE-WAZA";
+    const U8_TIME_EN  = "Fight time: NE-WAZA";
 
     const U10_TIME_HU = "Küzdelmi idő: 2 perc (GS 1 perc)";
     const U10_TIME_RO = "Timp de luptă: 2 minute (GS 1 min.)";
@@ -650,8 +682,6 @@
         "about-li3": "Mérlegelés és verseny lebonyolítás a helyszínen.",
         "about-li4": "Díjazás: a szervezői kiírás szerint.",
 
-       
-
         "about-card3-title": "Fontos tudnivalók",
         "about-li9": "Kérjük időben érkezni a mérlegeléshez.",
         "about-li10": "Felszerelés: judogi (fehér/kék) ajánlott.",
@@ -669,8 +699,15 @@
 
         "categories-title": "Kategóriák",
         "categories-sub": "Az alábbi korcsoportok, súlycsoportok és küzdelmi idők a megadott kiírás szerint.",
-        "cat-only-title": "Korcsoportok (U6 / U8 / U10 / U12 / U14 / U16)",
-        "cat-only-sub": "Fiúk/Lányok súlycsoportok + küzdelmi idő (GS).",
+
+        /* ✅ ÚJ CÍMEK + PIROS INFÓ (HU) */
+        "cat-u6u8-title": "U6 / U8 (külön rubrika)",
+        "cat-u6u8-sub": "Fiúk/Lányok súlycsoportok + küzdelmi idő.",
+        "u6u8-extra": "Korcsoport: 2019–2020; 2021–2022. 4 judoka/csoportba lesznek beosztva, a mérkőzések NE-WAZA lesznek.",
+
+        "cat-u10u16-title": "U10 / U12 / U14 / U16",
+        "cat-u10u16-sub": "Fiúk/Lányok súlycsoportok + küzdelmi idő (GS).",
+
         "male": "Férfi (Fiúk)",
         "female": "Női (Lányok)",
 
@@ -714,7 +751,6 @@
         "download-title": "Word letöltés – nevezési / ellenőrző lista",
         "download-sub": "Innen tudod letölteni a Word dokumentumot.",
         "download-btn": "⬇️ Word lista letöltése",
-
 
         "contact-title": "Kapcsolat",
         "contact-main": "Kérdésed van a nevezéssel vagy kategóriákkal kapcsolatban? Írj vagy hívj bátran.",
@@ -780,8 +816,6 @@
         "about-li3": "Cântar + desfășurare la locație.",
         "about-li4": "Premiere: conform regulamentului.",
 
-       
-
         "about-card3-title": "Informații importante",
         "about-li9": "Vă rugăm să ajungeți din timp pentru cântar.",
         "about-li10": "Echipament: judogi (alb/albastru) recomandat.",
@@ -799,8 +833,15 @@
 
         "categories-title": "Categorii",
         "categories-sub": "Mai jos sunt grupele de vârstă, categoriile de greutate și durata luptei conform datelor primite.",
-        "cat-only-title": "Grupe de vârstă (U6 / U8 / U10 / U12 / U14 / U16)",
-        "cat-only-sub": "Masculin/Feminin + greutăți + timp de luptă (GS).",
+
+        /* ✅ ÚJ CÍMEK + PIROS INFÓ (RO) */
+        "cat-u6u8-title": "U6 / U8 (rubrică separată)",
+        "cat-u6u8-sub": "Masculin/Feminin + greutăți + timp de luptă.",
+        "u6u8-extra": "Categoria de vârstă 2020–2019; 2021–2022. Va fi grupată câte 4 Judoka. Meciurile vor fi NE-WAZA.",
+
+        "cat-u10u16-title": "U10 / U12 / U14 / U16",
+        "cat-u10u16-sub": "Masculin/Feminin + greutăți + timp de luptă (GS).",
+
         "male": "Masculin",
         "female": "Feminin",
 
@@ -844,7 +885,7 @@
         "download-title": "Descărcare Word – listă înscriere / verificare",
         "download-sub": "Descarcă documentul Word.",
         "download-btn": "⬇️ Descarcă lista Word",
-      
+
         "contact-title": "Contact",
         "contact-main": "Întrebări despre înscriere sau categorii? Scrie-mi sau sună cu încredere.",
         "contact-list-intro": "Este util dacă menționezi: ",
@@ -909,8 +950,6 @@
         "about-li3": "Weigh-in and competition held at the venue.",
         "about-li4": "Awards: according to the official bulletin.",
 
-    
-
         "about-card3-title": "Important information",
         "about-li9": "Please arrive early for weigh-in.",
         "about-li10": "Equipment: judogi (white/blue) recommended.",
@@ -928,8 +967,15 @@
 
         "categories-title": "Categories",
         "categories-sub": "Below are the age groups, weight categories and fight times as provided.",
-        "cat-only-title": "Age groups (U6 / U8 / U10 / U12 / U14 / U16)",
-        "cat-only-sub": "Male/Female weight classes + fight time (GS).",
+
+        /* ✅ ÚJ CÍMEK + PIROS INFÓ (EN) */
+        "cat-u6u8-title": "U6 / U8 (separate section)",
+        "cat-u6u8-sub": "Male/Female weight classes + fight time.",
+        "u6u8-extra": "Age category 2019–2020; 2021–2022. Athletes will be grouped in sets of 4 judoka. Matches will be NE-WAZA.",
+
+        "cat-u10u16-title": "U10 / U12 / U14 / U16",
+        "cat-u10u16-sub": "Male/Female weight classes + fight time (GS).",
+
         "male": "Male",
         "female": "Female",
 
@@ -973,7 +1019,6 @@
         "download-title": "Word download – entry / check list",
         "download-sub": "Download the Word document here.",
         "download-btn": "⬇️ Download Word list",
-   
 
         "contact-title": "Contact",
         "contact-main": "Questions about registration or categories? Message or call anytime.",
@@ -1030,7 +1075,7 @@
       refreshDownloadButton();
     }
 
-    setLanguage('hu');
+    setLanguage('ro');
     document.getElementById('btn-hu').addEventListener('click', () => setLanguage('hu'));
     document.getElementById('btn-ro').addEventListener('click', () => setLanguage('ro'));
     document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
