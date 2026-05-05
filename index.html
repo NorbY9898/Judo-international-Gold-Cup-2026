@@ -9,9 +9,6 @@
     *{ box-sizing:border-box; margin:0; padding:0; font-family:Arial, sans-serif; }
     a{text-decoration:none;color:inherit;}
 
-    /* =========================
-       ✅ HÁTTÉR + OVERLAY + NOISE
-       ========================= */
     body{
       color:#f7f7f7;
       background:
@@ -29,8 +26,7 @@
       inset:0;
       z-index:-1;
       pointer-events:none;
-      background:
-        radial-gradient(circle at 50% 35%, rgba(0,0,0,0.25), rgba(0,0,0,0.80));
+      background:radial-gradient(circle at 50% 35%, rgba(0,0,0,0.25), rgba(0,0,0,0.80));
     }
 
     .bg-noise{
@@ -40,13 +36,13 @@
       pointer-events:none;
       opacity:0.08;
       mix-blend-mode: overlay;
-      background-size: 180px 180px;
-      animation: noiseShift 0.85s steps(2) infinite;
+      background-size:180px 180px;
+      animation:noiseShift .85s steps(2) infinite;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
     }
     @keyframes noiseShift{
-      0%   { transform: translate(0,0); }
-      100% { transform: translate(-12px, 10px); }
+      0%{ transform:translate(0,0); }
+      100%{ transform:translate(-12px,10px); }
     }
 
     header, main, footer, .banner-rails{ position:relative; z-index:2; }
@@ -54,237 +50,290 @@
     .wrapper{ max-width:1100px; margin:0 auto; padding:0 16px 40px; }
     .accent{ color:#FFD700; }
 
-    /* NAV */
     header{
-      position:sticky; top:0; z-index:10;
-      background:rgba(5,5,5,0.96); backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(255,215,0,0.35);
-      box-shadow:0 4px 18px rgba(0,0,0,0.7);
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(5,5,5,.96);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,215,0,.35);
+      box-shadow:0 4px 18px rgba(0,0,0,.7);
     }
+
     .nav{ display:flex; align-items:center; justify-content:space-between; padding:10px 0; gap:12px; }
     .nav-brand{ display:flex; align-items:center; gap:8px; min-width:190px; }
     .nav-logo{ height:26px; width:auto; display:block; border-radius:6px; }
     .logo-text{
-      font-weight:bold; letter-spacing:1px; color:#FFD700; text-transform:uppercase;
-      font-size:0.95rem; white-space:nowrap;
+      font-weight:bold;
+      letter-spacing:1px;
+      color:#FFD700;
+      text-transform:uppercase;
+      font-size:.95rem;
+      white-space:nowrap;
     }
+
     .nav-center{ display:flex; flex:1; justify-content:center; }
-    .nav-links{ display:flex; gap:18px; font-size:0.9rem; flex-wrap:wrap; justify-content:center; }
-    .nav-links a{ opacity:0.85; }
+    .nav-links{ display:flex; gap:18px; font-size:.9rem; flex-wrap:wrap; justify-content:center; }
+    .nav-links a{ opacity:.85; }
     .nav-links a:hover{ opacity:1; color:#FFE88A; }
 
-    /* Nyelvválasztó */
     .lang-switch{ display:flex; gap:6px; min-width:160px; justify-content:flex-end; flex-wrap:wrap; }
     .lang-btn{
-      border-radius:999px; padding:4px 9px; font-size:0.75rem;
-      border:1px solid rgba(255,215,0,0.4);
-      background:rgba(10,10,10,0.95); color:#f5f5f5; cursor:pointer;
+      border-radius:999px;
+      padding:4px 9px;
+      font-size:.75rem;
+      border:1px solid rgba(255,215,0,.4);
+      background:rgba(10,10,10,.95);
+      color:#f5f5f5;
+      cursor:pointer;
     }
     .lang-btn.active{
-      background:#FFD700; color:#201500; font-weight:bold;
-      box-shadow:0 0 10px rgba(255,215,0,0.8); border-color:#FFD700;
+      background:#FFD700;
+      color:#201500;
+      font-weight:bold;
+      box-shadow:0 0 10px rgba(255,215,0,.8);
+      border-color:#FFD700;
     }
 
-    /* HERO */
-    .hero{ padding:40px 0 32px; display:grid; grid-template-columns:1.2fr 1fr; gap:32px; align-items:center; }
-    @media (max-width: 800px){
-      .hero{ grid-template-columns:1fr; text-align:center; }
-      .nav{ flex-wrap:wrap; }
-      .nav-center{ order:3; width:100%; }
-      .nav-brand{ justify-content:center; width:100%; }
-      .lang-switch{ justify-content:center; width:100%; }
+    .hero{
+      padding:40px 0 32px;
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:32px;
+      align-items:center;
     }
 
-    .hero-title{ font-size:2.3rem; margin-bottom:12px; line-height:1.15; }
+    .hero-title{ font-size:2.3rem; margin-bottom:8px; line-height:1.15; }
+    .event-date{
+      display:inline-block;
+      margin:0 0 14px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,215,0,.8);
+      background:rgba(0,0,0,.72);
+      color:#FFD700;
+      font-size:1.35rem;
+      font-weight:900;
+      letter-spacing:.5px;
+      box-shadow:0 0 18px rgba(255,215,0,.35);
+    }
     .hero-sub{ font-size:1rem; color:#d6d6d6; margin-bottom:20px; }
     .hero-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
     .badge{
-      font-size:0.75rem; padding:4px 9px; border-radius:999px;
-      border:1px solid rgba(255,215,0,0.7);
-      color:#FFE88A; background:rgba(10,10,10,0.85);
+      font-size:.75rem;
+      padding:4px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,215,0,.7);
+      color:#FFE88A;
+      background:rgba(10,10,10,.85);
     }
 
     .hero-cta{ display:flex; flex-wrap:wrap; gap:10px; }
     .btn-primary{
       background:linear-gradient(135deg,#FFE48A,#C8A200);
-      color:#211600; padding:10px 18px; border-radius:999px;
-      font-weight:bold; font-size:0.95rem; border:none; cursor:pointer;
-      display:inline-flex; align-items:center; gap:6px;
-      box-shadow:0 0 18px rgba(255,215,0,0.85);
+      color:#211600;
+      padding:10px 18px;
+      border-radius:999px;
+      font-weight:bold;
+      font-size:.95rem;
+      border:none;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      box-shadow:0 0 18px rgba(255,215,0,.85);
     }
     .btn-secondary{
-      border-radius:999px; padding:9px 16px;
-      border:1px solid rgba(180,180,180,0.7);
-      font-size:0.9rem; background:rgba(10,10,10,0.9);
-      cursor:pointer; display:inline-flex; align-items:center; gap:6px; color:#f0f0f0;
+      border-radius:999px;
+      padding:9px 16px;
+      border:1px solid rgba(180,180,180,.7);
+      font-size:.9rem;
+      background:rgba(10,10,10,.9);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:#f0f0f0;
     }
     .btn-primary:hover{ filter:brightness(1.05); }
     .btn-secondary:hover{ border-color:#FFD700; }
 
     .hero-card{
-      border-radius:22px; background:radial-gradient(circle at top,#232323,#050505);
-      border:1px solid rgba(255,215,0,0.7);
-      box-shadow:0 0 22px rgba(0,0,0,0.9), 0 0 26px rgba(255,215,0,0.4);
+      border-radius:22px;
+      background:radial-gradient(circle at top,#232323,#050505);
+      border:1px solid rgba(255,215,0,.7);
+      box-shadow:0 0 22px rgba(0,0,0,.9), 0 0 26px rgba(255,215,0,.4);
       padding:20px 18px 18px;
     }
     .hero-mini{
-      width:100%; border-radius:16px; border:1px solid rgba(255,215,0,0.8);
-      padding:16px 12px 14px; background:linear-gradient(140deg,#141414,#050505);
-      text-align:center; margin-bottom:10px;
+      width:100%;
+      border-radius:16px;
+      border:1px solid rgba(255,215,0,.8);
+      padding:16px 12px 14px;
+      background:linear-gradient(140deg,#141414,#050505);
+      text-align:center;
+      margin-bottom:10px;
     }
     .hero-mini-logo{
-      width:80px; height:80px; border-radius:18px; border:2px solid #FFD700;
-      margin:0 auto 10px; display:flex; align-items:center; justify-content:center;
-      background:#000; color:#FFD700; font-weight:bold; font-size:0.8rem;
-      box-shadow:0 0 16px rgba(255,215,0,0.6);
+      width:80px;
+      height:80px;
+      border-radius:18px;
+      border:2px solid #FFD700;
+      margin:0 auto 10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#000;
+      color:#FFD700;
+      font-weight:bold;
+      font-size:.8rem;
+      box-shadow:0 0 16px rgba(255,215,0,.6);
     }
     .hero-mini-buttons{ display:flex; justify-content:center; gap:8px; margin-top:8px; flex-wrap:wrap; }
     .mini-btn{
-      width:34px; height:34px; border-radius:10px;
-      border:1px solid rgba(255,215,0,0.9);
-      display:flex; align-items:center; justify-content:center;
-      font-size:0.75rem; color:#FFE88A; background:rgba(0,0,0,0.9);
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      border:1px solid rgba(255,215,0,.9);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.75rem;
+      color:#FFE88A;
+      background:rgba(0,0,0,.9);
     }
-    .hero-note{ font-size:0.75rem; color:#b5b5b5; margin-top:6px; text-align:center; }
+    .hero-note{ font-size:.75rem; color:#b5b5b5; margin-top:6px; text-align:center; }
 
-    /* SECTIONS */
     section{ padding:28px 0 8px; }
     h2.section-title{ font-size:1.6rem; margin-bottom:12px; }
-    .section-sub{ font-size:0.95rem; color:#d0d0d0; margin-bottom:18px; }
+    .section-sub{ font-size:.95rem; color:#d0d0d0; margin-bottom:18px; }
 
-    /* Cards / blocks */
     .grid-3{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
     .card{
-      background:rgba(10,10,10,0.92);
+      background:rgba(10,10,10,.92);
       padding:14px 14px 16px;
       border-radius:14px;
       border:1px solid #2b2b2b;
-      box-shadow:0 0 10px rgba(0,0,0,0.7);
+      box-shadow:0 0 10px rgba(0,0,0,.7);
     }
     .card-title{ font-weight:bold; margin-bottom:8px; color:#FFE88A; }
-    .list{ font-size:0.88rem; color:#e2e2e2; margin-left:16px; line-height:1.55; }
+    .list{ font-size:.88rem; color:#e2e2e2; margin-left:16px; line-height:1.55; }
 
-    /* ✅ KÖZÉPSŐ KÉP KÁRTYA */
     .media-card{
-      border:1px solid rgba(255,215,0,0.55);
-      background:rgba(8,8,8,0.93);
-      box-shadow:0 0 16px rgba(0,0,0,0.85), 0 0 18px rgba(255,215,0,0.12);
+      border:1px solid rgba(255,215,0,.55);
+      background:rgba(8,8,8,.93);
+      box-shadow:0 0 16px rgba(0,0,0,.85), 0 0 18px rgba(255,215,0,.12);
     }
     .media-img{
       width:100%;
       height:auto;
       display:block;
       border-radius:12px;
-      border:1px solid rgba(255,215,0,0.25);
-    }
-    .media-cap{
-      margin-top:10px;
-      font-size:0.88rem;
-      color:#dcdcdc;
-      line-height:1.45;
+      border:1px solid rgba(255,215,0,.25);
     }
 
-    /* Categories (single card) */
     .cat-block{
-      background:rgba(8,8,8,0.97);
+      background:rgba(8,8,8,.97);
       border-radius:18px;
-      border:1px solid rgba(255,215,0,0.65);
-      box-shadow:0 0 16px rgba(0,0,0,0.9), 0 0 18px rgba(255,215,0,0.2);
+      border:1px solid rgba(255,215,0,.65);
+      box-shadow:0 0 16px rgba(0,0,0,.9), 0 0 18px rgba(255,215,0,.2);
       padding:16px;
       margin-bottom:16px;
     }
     .cat-group{
-      border:1px solid rgba(255,215,0,0.25);
+      border:1px solid rgba(255,215,0,.25);
       border-radius:14px;
       padding:12px;
       margin-top:12px;
-      background:rgba(10,10,10,0.55);
+      background:rgba(10,10,10,.55);
     }
     .cat-group h3{ font-size:1rem; margin-bottom:6px; color:#FFE88A; }
-    .cat-meta{ font-size:0.85rem; color:#cfcfcf; margin-bottom:10px; }
-    .cat-sex{ margin-top:8px; font-size:0.88rem; color:#e6e6e6; line-height:1.55; }
+    .cat-meta{ font-size:.85rem; color:#cfcfcf; margin-bottom:10px; }
+    .cat-sex{ margin-top:8px; font-size:.88rem; color:#e6e6e6; line-height:1.55; }
     .cat-sex strong{ color:#FFD700; }
 
-    /* ✅ PIROS, VASTAG INFÓ (U6–U8) */
-    .u6u8-note{
+    .u7-note{
       margin-top:10px;
       padding:10px 12px;
       border-radius:12px;
-      border:1px solid rgba(255,59,59,0.55);
-      background:rgba(25,0,0,0.45);
-      box-shadow:0 0 14px rgba(0,0,0,0.65);
+      border:1px solid rgba(255,59,59,.55);
+      background:rgba(25,0,0,.45);
+      box-shadow:0 0 14px rgba(0,0,0,.65);
     }
-    .u6u8-note strong{
+    .u7-note strong{
       color:#ff3b3b;
       font-weight:900;
-      letter-spacing:0.2px;
-      text-shadow:0 0 10px rgba(255,59,59,0.35);
       display:block;
       line-height:1.35;
-      font-size:0.92rem;
+      font-size:.92rem;
+      text-shadow:0 0 10px rgba(255,59,59,.35);
     }
 
-    /* Download */
     .download-card{
       margin-top:10px;
       border-radius:18px;
-      background:rgba(8,8,8,0.97);
-      border:1px solid rgba(255,215,0,0.65);
-      box-shadow:0 0 16px rgba(0,0,0,0.9), 0 0 18px rgba(255,215,0,0.2);
+      background:rgba(8,8,8,.97);
+      border:1px solid rgba(255,215,0,.65);
+      box-shadow:0 0 16px rgba(0,0,0,.9), 0 0 18px rgba(255,215,0,.2);
       padding:16px;
     }
     .download-title{ font-size:1.2rem; margin-bottom:6px; color:#FFE88A; font-weight:bold; }
-    .download-sub{ font-size:0.95rem; color:#d6d6d6; margin-bottom:12px; }
+    .download-sub{ font-size:.95rem; color:#d6d6d6; margin-bottom:12px; }
 
-    /* CONTACT */
     .contact-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:20px; align-items:flex-start; }
-    @media (max-width:800px){ .contact-grid{ grid-template-columns:1fr; } }
-    .contact-text{ font-size:0.9rem; color:#e4e4e4; }
+    .contact-text{ font-size:.9rem; color:#e4e4e4; }
     .contact-box{
-      background:rgba(8,8,8,0.97);
+      background:rgba(8,8,8,.97);
       border-radius:14px;
-      border:1px solid rgba(255,215,0,0.6);
+      border:1px solid rgba(255,215,0,.6);
       padding:14px;
-      box-shadow:0 0 16px rgba(0,0,0,0.85);
+      box-shadow:0 0 16px rgba(0,0,0,.85);
     }
+    .contact-visible{
+      margin:10px 0 12px;
+      display:grid;
+      gap:8px;
+      font-size:.92rem;
+      color:#f0f0f0;
+    }
+    .contact-line{
+      padding:8px 10px;
+      border-radius:12px;
+      background:rgba(0,0,0,.5);
+      border:1px solid rgba(255,215,0,.22);
+      word-break:break-word;
+    }
+    .contact-line strong{ color:#FFD700; }
     .contact-buttons{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
-    .contact-small{ font-size:0.8rem; color:#b3b3b3; margin-top:6px; }
+    .contact-small{ font-size:.8rem; color:#b3b3b3; margin-top:6px; }
 
-    footer{ text-align:center; font-size:0.75rem; color:#8a8a8a; padding:16px 0 0; }
+    footer{ text-align:center; font-size:.75rem; color:#8a8a8a; padding:16px 0 0; }
 
-    /* PC oldalsó bannerek */
     .banner-rails{ position:fixed; top:90px; left:0; right:0; z-index:2; pointer-events:none; }
     .banner-rail{ position:absolute; width:300px; pointer-events:auto; }
     .banner-left{ left:18px; }
     .banner-right{ right:18px; }
-
     .banner-card{
       display:block;
       border-radius:18px;
       overflow:hidden;
-      border:1px solid rgba(255,215,0,0.5);
-      background: rgba(8,8,8,0.92);
-      box-shadow:0 0 16px rgba(0,0,0,0.85), 0 0 22px rgba(255,215,0,0.14);
+      border:1px solid rgba(255,215,0,.5);
+      background:rgba(8,8,8,.92);
+      box-shadow:0 0 16px rgba(0,0,0,.85), 0 0 22px rgba(255,215,0,.14);
       margin-bottom:14px;
-      transition:transform 0.12s ease, filter 0.12s ease;
+      transition:transform .12s ease, filter .12s ease;
     }
-    .banner-card:hover{ transform: translateY(-1px); filter: brightness(1.04); }
+    .banner-card:hover{ transform:translateY(-1px); filter:brightness(1.04); }
     .banner-card img{ width:100%; height:auto; display:block; }
-    .banner-cap{ padding:12px 12px 14px; font-size:0.9rem; color:#e8e8e8; line-height:1.35; }
-    .banner-cap strong{ display:block; margin-bottom:2px; color:#FFE88A; font-size:0.95rem; }
-    .banner-cta{ margin-top:8px; display:inline-block; font-size:0.85rem; color:#FFD700; opacity:0.95; }
-    .banner-cta:hover{ opacity:1; }
+    .banner-cap{ padding:12px 12px 14px; font-size:.9rem; color:#e8e8e8; line-height:1.35; }
+    .banner-cap strong{ display:block; margin-bottom:2px; color:#FFE88A; font-size:.95rem; }
+    .banner-cta{ margin-top:8px; display:inline-block; font-size:.85rem; color:#FFD700; opacity:.95; }
 
-    @media (min-width: 1350px){
+    @media (min-width:1350px){
       body{ padding-left:340px; padding-right:340px; }
     }
 
     .mobile-banners{ display:none; margin-top:16px; }
-    @media (max-width: 1349px){
-      .banner-rails{ display:none; }
-      body{ padding-left:0; padding-right:0; }
-      .mobile-banners{ display:block; }
-    }
 
     .footer-brand{
       margin-top:10px;
@@ -293,20 +342,32 @@
       align-items:center;
       justify-content:center;
       flex-wrap:wrap;
-      opacity:0.9;
+      opacity:.9;
     }
     .footer-brand img{
       height:22px;
       width:auto;
       border-radius:6px;
-      border:1px solid rgba(255,215,0,0.35);
+      border:1px solid rgba(255,215,0,.35);
     }
-    .footer-brand a{ color:#FFD700; opacity:0.95; }
-    .footer-brand a:hover{ opacity:1; }
+    .footer-brand a{ color:#FFD700; opacity:.95; }
 
-    @media (max-width: 800px){
-      body{ background-attachment: scroll; }
-      .bg-noise{ opacity:0.06; }
+    @media (max-width:1349px){
+      .banner-rails{ display:none; }
+      body{ padding-left:0; padding-right:0; }
+      .mobile-banners{ display:block; }
+    }
+
+    @media (max-width:800px){
+      .hero{ grid-template-columns:1fr; text-align:center; }
+      .hero-badges,.hero-cta{ justify-content:center; }
+      .nav{ flex-wrap:wrap; }
+      .nav-center{ order:3; width:100%; }
+      .nav-brand{ justify-content:center; width:100%; }
+      .lang-switch{ justify-content:center; width:100%; }
+      .contact-grid{ grid-template-columns:1fr; }
+      body{ background-attachment:scroll; }
+      .bg-noise{ opacity:.06; }
     }
   </style>
 </head>
@@ -314,7 +375,6 @@
 <body>
   <div class="bg-noise" aria-hidden="true"></div>
 
-  <!-- PC bannerek -->
   <div class="banner-rails" aria-label="Nsport banners">
     <div class="banner-rail banner-left">
       <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
@@ -325,7 +385,6 @@
           <span class="banner-cta" data-i18n="pc-ads-cta"></span>
         </div>
       </a>
-
       <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
         <img src="nsport_banner_2.jpg" alt="Nsport banner 2">
         <div class="banner-cap">
@@ -345,7 +404,6 @@
           <span class="banner-cta" data-i18n="pc-ads-cta"></span>
         </div>
       </a>
-
       <a class="banner-card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener">
         <img src="nsport_banner_4.jpg" alt="Nsport banner 4">
         <div class="banner-cap">
@@ -361,21 +419,21 @@
     <div class="wrapper nav">
       <div class="nav-brand">
         <img src="logo.png" alt="Judo Cupa de Aur logó" class="nav-logo" />
-        <span class="logo-text" data-i18n="logo-text">Concurs internațional de judo – Cupa de Aur 2026</span>
+        <span class="logo-text" data-i18n="logo-text"></span>
       </div>
 
       <div class="nav-center">
         <nav class="nav-links">
-          <a href="#about" data-i18n="nav-about">Verseny</a>
-          <a href="#location" data-i18n="nav-location">Helyszín</a>
-          <a href="#categories" data-i18n="nav-categories">Kategóriák</a>
-          <a href="#download" data-i18n="nav-download">Letöltés</a>
-          <a href="#contact" data-i18n="nav-contact">Kapcsolat</a>
+          <a href="#about" data-i18n="nav-about"></a>
+          <a href="#location" data-i18n="nav-location"></a>
+          <a href="#categories" data-i18n="nav-categories"></a>
+          <a href="#download" data-i18n="nav-download"></a>
+          <a href="#contact" data-i18n="nav-contact"></a>
         </nav>
       </div>
 
       <div class="lang-switch">
-        <button class="lang-btn active" id="btn-hu">HU</button>
+        <button class="lang-btn" id="btn-hu">HU</button>
         <button class="lang-btn" id="btn-ro">RO</button>
         <button class="lang-btn" id="btn-en">EN</button>
       </div>
@@ -384,10 +442,10 @@
 
   <main class="wrapper">
 
-    <!-- HERO -->
     <section class="hero" id="about">
       <div>
         <h1 class="hero-title" data-i18n="hero-title"></h1>
+        <div class="event-date" data-i18n="event-date"></div>
         <p class="hero-sub" data-i18n="hero-sub"></p>
 
         <div class="hero-badges">
@@ -404,9 +462,9 @@
 
       <div class="hero-card">
         <div class="hero-mini">
-          <div class="hero-mini-logo" data-i18n="preview-logo">JUDO</div>
-          <div style="font-size:0.9rem;margin-bottom:2px;" data-i18n="preview-name">Cupa de Aur 2026</div>
-          <div style="font-size:0.75rem;color:#c7c7c7;" data-i18n="preview-desc"></div>
+          <div class="hero-mini-logo" data-i18n="preview-logo"></div>
+          <div style="font-size:.9rem;margin-bottom:2px;" data-i18n="preview-name"></div>
+          <div style="font-size:.75rem;color:#c7c7c7;" data-i18n="preview-desc"></div>
           <div class="hero-mini-buttons">
             <div class="mini-btn">📍</div>
             <div class="mini-btn">⏱</div>
@@ -419,12 +477,10 @@
       </div>
     </section>
 
-    <!-- VERSENY LEÍRÁS -->
     <section>
       <h2 class="section-title" data-i18n="about-title"></h2>
       <p class="section-sub" data-i18n="about-sub"></p>
 
-      <!-- ✅ BAL: Általános info | KÖZÉP: Kép | JOBB: Fontos tudnivalók -->
       <div class="grid-3">
         <div class="card">
           <div class="card-title" data-i18n="about-card1-title"></div>
@@ -436,11 +492,9 @@
           </ul>
         </div>
 
-        <!-- ✅ KÉP KÁRTYA -->
         <div class="card media-card">
           <div class="card-title" data-i18n="about-media-title"></div>
           <img class="media-img" src="event_poster.png" alt="Event poster">
-          <div class="media-cap" data-i18n="about-media-cap"></div>
         </div>
 
         <div class="card">
@@ -456,7 +510,6 @@
       </div>
     </section>
 
-    <!-- HELYSZÍN -->
     <section id="location">
       <h2 class="section-title" data-i18n="location-title"></h2>
       <p class="section-sub" data-i18n="location-sub"></p>
@@ -472,89 +525,74 @@
       </div>
     </section>
 
-    <!-- KATEGÓRIÁK -->
     <section id="categories">
       <h2 class="section-title" data-i18n="categories-title"></h2>
       <p class="section-sub" data-i18n="categories-sub"></p>
 
-      <!-- ✅ ÚJ: U6–U8 KÜLÖN RUBRIKA -->
       <div class="cat-block">
-        <div class="card-title" style="margin-bottom:2px;" data-i18n="cat-u6u8-title"></div>
-        <div class="section-sub" style="margin:6px 0 0;" data-i18n="cat-u6u8-sub"></div>
+        <div class="card-title" data-i18n="cat-u7-title"></div>
+        <div class="section-sub" style="margin:6px 0 0;" data-i18n="cat-u7-sub"></div>
 
-        <!-- ✅ PIROS, VASTAG EXTRA INFÓ (3 nyelven i18n) -->
-        <div class="u6u8-note">
-          <strong data-i18n="u6u8-extra"></strong>
+        <div class="u7-note">
+          <strong data-i18n="u7-extra"></strong>
         </div>
 
         <div class="cat-group">
-          <h3 data-i18n="u6-title"></h3>
-          <div class="cat-meta" data-i18n="u6-years"></div>
-          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u6-male"></span></div>
-          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u6-female"></span></div>
-          <div class="cat-meta" style="margin-top:10px;" data-i18n="u6-time"></div>
-        </div>
-
-        <div class="cat-group">
-          <h3 data-i18n="u8-title"></h3>
-          <div class="cat-meta" data-i18n="u8-years"></div>
-          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u8-male"></span></div>
-          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u8-female"></span></div>
-          <div class="cat-meta" style="margin-top:10px;" data-i18n="u8-time"></div>
+          <h3 data-i18n="u7-title"></h3>
+          <div class="cat-meta" data-i18n="u7-years"></div>
+          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u7-male"></span></div>
+          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u7-female"></span></div>
+          <div class="cat-meta" style="margin-top:10px;" data-i18n="u7-time"></div>
         </div>
       </div>
 
-      <!-- ✅ MARADÓ KATEGÓRIÁK (U10–U16) -->
       <div class="cat-block">
-        <div class="card-title" style="margin-bottom:2px;" data-i18n="cat-u10u16-title"></div>
-        <div class="section-sub" style="margin:6px 0 0;" data-i18n="cat-u10u16-sub"></div>
+        <div class="card-title" data-i18n="cat-u9u15-title"></div>
+        <div class="section-sub" style="margin:6px 0 0;" data-i18n="cat-u9u15-sub"></div>
 
         <div class="cat-group">
-          <h3 data-i18n="u10-title"></h3>
-          <div class="cat-meta" data-i18n="u10-years"></div>
-          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u10-male"></span></div>
-          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u10-female"></span></div>
-          <div class="cat-meta" style="margin-top:10px;" data-i18n="u10-time"></div>
+          <h3 data-i18n="u9-title"></h3>
+          <div class="cat-meta" data-i18n="u9-years"></div>
+          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u9-male"></span></div>
+          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u9-female"></span></div>
+          <div class="cat-meta" style="margin-top:10px;" data-i18n="u9-time"></div>
         </div>
 
         <div class="cat-group">
-          <h3 data-i18n="u12-title"></h3>
-          <div class="cat-meta" data-i18n="u12-years"></div>
-          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u12-male"></span></div>
-          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u12-female"></span></div>
-          <div class="cat-meta" style="margin-top:10px;" data-i18n="u12-time"></div>
+          <h3 data-i18n="u11-title"></h3>
+          <div class="cat-meta" data-i18n="u11-years"></div>
+          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u11-male"></span></div>
+          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u11-female"></span></div>
+          <div class="cat-meta" style="margin-top:10px;" data-i18n="u11-time"></div>
         </div>
 
         <div class="cat-group">
-          <h3 data-i18n="u14-title"></h3>
-          <div class="cat-meta" data-i18n="u14-years"></div>
-          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u14-male"></span></div>
-          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u14-female"></span></div>
-          <div class="cat-meta" style="margin-top:10px;" data-i18n="u14-time"></div>
+          <h3 data-i18n="u13-title"></h3>
+          <div class="cat-meta" data-i18n="u13-years"></div>
+          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u13-male"></span></div>
+          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u13-female"></span></div>
+          <div class="cat-meta" style="margin-top:10px;" data-i18n="u13-time"></div>
         </div>
 
         <div class="cat-group">
-          <h3 data-i18n="u16-title"></h3>
-          <div class="cat-meta" data-i18n="u16-years"></div>
-          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u16-male"></span></div>
-          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u16-female"></span></div>
-          <div class="cat-meta" style="margin-top:10px;" data-i18n="u16-time"></div>
+          <h3 data-i18n="u15-title"></h3>
+          <div class="cat-meta" data-i18n="u15-years"></div>
+          <div class="cat-sex"><strong data-i18n="male"></strong><br><span data-i18n="u15-male"></span></div>
+          <div class="cat-sex"><strong data-i18n="female"></strong><br><span data-i18n="u15-female"></span></div>
+          <div class="cat-meta" style="margin-top:10px;" data-i18n="u15-time"></div>
         </div>
       </div>
     </section>
 
-    <!-- LETÖLTÉS -->
     <section id="download">
       <h2 class="section-title" data-i18n="download-section-title"></h2>
       <div class="download-card">
         <div class="download-title" data-i18n="download-title"></div>
         <div class="download-sub" data-i18n="download-sub"></div>
         <a class="btn-primary" id="btn-download" href="#" target="_blank" rel="noopener" data-i18n="download-btn"></a>
-        <div class="hero-note" style="margin-top:10px;" data-i18n="download-note"></div>
       </div>
     </section>
 
-    <!-- KAPCSOLAT -->
     <section id="contact">
       <h2 class="section-title" data-i18n="contact-title"></h2>
 
@@ -571,9 +609,15 @@
 
         <div class="contact-box">
           <div style="font-weight:bold;margin-bottom:6px;" data-i18n="contact-direct"></div>
+
+          <div class="contact-visible">
+            <div class="contact-line"><strong data-i18n="contact-phone-label"></strong> <a href="tel:+40740901573">+40 740 901 573</a></div>
+            <div class="contact-line"><strong data-i18n="contact-email-label"></strong> <a href="mailto:judoacsviitorulbors@yahoo.com">judoacsviitorulbors@yahoo.com</a></div>
+          </div>
+
           <div class="contact-buttons">
             <a class="btn-secondary" href="tel:+40740901573" data-i18n="contact-call"></a>
-            <a class="btn-secondary" href="mailto:steliannagy@yahoo.com" data-i18n="contact-email"></a>
+            <a class="btn-secondary" href="mailto:judoacsviitorulbors@yahoo.com" data-i18n="contact-email"></a>
             <a class="btn-primary" href="https://wa.me/40740901573" target="_blank" rel="noopener" data-i18n="contact-whatsapp"></a>
           </div>
           <div class="contact-small" data-i18n="contact-langs"></div>
@@ -581,7 +625,6 @@
       </div>
     </section>
 
-    <!-- MOBIL: BANNEREK ALUL -->
     <section class="mobile-banners">
       <h2 class="section-title" style="font-size:1.2rem;" data-i18n="mobile-ads-title"></h2>
       <p class="section-sub" style="margin-bottom:12px;" data-i18n="mobile-ads-sub"></p>
@@ -589,20 +632,20 @@
       <div class="grid-3">
         <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
           <div class="card-title" data-i18n="mobile-ads-1-title"></div>
-          <img src="nsport_banner_1.jpg" alt="Nsport – New arrivals" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
-          <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-1-text"></div>
+          <img src="nsport_banner_1.jpg" alt="Nsport" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,.25);">
+          <div style="margin-top:10px;color:#dcdcdc;font-size:.88rem;" data-i18n="mobile-ads-1-text"></div>
         </a>
 
         <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
           <div class="card-title" data-i18n="mobile-ads-2-title"></div>
-          <img src="nsport_banner_3.jpg" alt="Nsport – Featured" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
-          <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-2-text"></div>
+          <img src="nsport_banner_3.jpg" alt="Nsport" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,.25);">
+          <div style="margin-top:10px;color:#dcdcdc;font-size:.88rem;" data-i18n="mobile-ads-2-text"></div>
         </a>
 
         <a class="card" href="https://norby9898.github.io/nsport-web" target="_blank" rel="noopener" style="display:block;">
           <div class="card-title" data-i18n="mobile-ads-3-title"></div>
-          <img src="nsport_banner_2.jpg" alt="Nsport – Deals" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,0.25);">
-          <div style="margin-top:10px;color:#dcdcdc;font-size:0.88rem;" data-i18n="mobile-ads-3-text"></div>
+          <img src="nsport_banner_2.jpg" alt="Nsport" style="width:100%;border-radius:12px;border:1px solid rgba(255,215,0,.25);">
+          <div style="margin-top:10px;color:#dcdcdc;font-size:.88rem;" data-i18n="mobile-ads-3-text"></div>
         </a>
       </div>
     </section>
@@ -615,42 +658,31 @@
         <a href="https://norby9898.github.io/NextN-Digital" target="_blank" rel="noopener">NextN-design</a>
       </div>
     </footer>
-
   </main>
 
   <script>
-    let currentLang = 'hu';
+    let currentLang = 'ro';
 
-    /* ✅ IDE RAKD BE A WORD LETÖLTÉSI LINKET */
-    const DOWNLOAD_URL = "INTERNATIONAL JUDO GOLD CUP.docx"; // <-- ITT CSERÉLD LE!
+    const DOWNLOAD_URL = "INTERNATIONAL JUDO GOLD CUP.docx";
 
     function refreshDownloadButton(){
       document.getElementById("btn-download").setAttribute("href", DOWNLOAD_URL);
     }
 
-    /* =========================================================
-       ✅ SÚLYCSOPORT KONSTANSOK (KÉSŐBB ITT ÍRD ÁT, HA VÁLTOZIK)
-       ========================================================= */
-    const U6_MALE   = " 17 kg,  19 kg,  21 kg,  23 kg,  25 kg,  27 kg, 30 kg, 34 kg, 38 kg, +38 kg.";
-    const U6_FEMALE = " 18 kg,  20 kg,  22 kg,  24 kg,  26 kg,  28 kg, 32 kg, 36 kg, 40 kg, +40 kg";
+    const U7_MALE   = "17 kg, 19 kg, 21 kg, 23 kg, 25 kg, 27 kg, 30 kg, 34 kg, 38 kg, +38 kg.";
+    const U7_FEMALE = "18 kg, 20 kg, 22 kg, 24 kg, 26 kg, 28 kg, 32 kg, 36 kg, 40 kg, +40 kg.";
 
-    const U8_MALE   = " 17 kg,  19 kg,  21 kg,  23 kg,  25 kg,  27 kg, 30 kg, 34 kg, 38 kg, +38 kg.";
-    const U8_FEMALE = " 18 kg,  20 kg,  22 kg,  24 kg,  26 kg,  28 kg, 32 kg, 36 kg, 40 kg, +40 kg.";
+    const U9_MALE   = "22 kg, 24 kg, 27 kg, 30 kg, 34 kg, 38 kg, +38 kg.";
+    const U9_FEMALE = "19 kg, 21 kg, 25 kg, 28 kg, 32 kg, 36 kg, 40 kg, +40 kg.";
 
-    const U10_MALE   = "-22 kg, 24 kg, -28 kg, -32 kg, 34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, +55 kg.";
-    const U10_FEMALE = "-20 kg, 24 kg, -28 kg, -32 kg, 34 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, +52 kg.";
+    const U11_MALE   = "24 kg, 28 kg, 32 kg, 34 kg, 38 kg, 42 kg, 46 kg, 50 kg, 55 kg, +55 kg.";
+    const U11_FEMALE = "21 kg, 25 kg, 28 kg, 32 kg, 34 kg, 36 kg, 40 kg, 44 kg, 48 kg, 52 kg, +52 kg.";
 
-    const U6_TIME_HU  = "Küzdelmi idő: NE-WAZA";
-    const U6_TIME_RO  = "Timp de luptă: NE-WAZA ";
-    const U6_TIME_EN  = "Fight time: NE-WAZA";
+    const U13_MALE   = "30 kg, 34 kg, 38 kg, 42 kg, 46 kg, 50 kg, 55 kg, 60 kg, 66 kg, 73 kg, +73 kg.";
+    const U13_FEMALE = "25 kg, 28 kg, 32 kg, 36 kg, 40 kg, 44 kg, 48 kg, 52 kg, 57 kg, 63 kg, +63 kg.";
 
-    const U8_TIME_HU  = "Küzdelmi idő: NE-WAZA";
-    const U8_TIME_RO  = "Timp de luptă: NE-WAZA";
-    const U8_TIME_EN  = "Fight time: NE-WAZA";
-
-    const U10_TIME_HU = "Küzdelmi idő: 2 perc (GS 1 perc)";
-    const U10_TIME_RO = "Timp de luptă: 2 minute (GS 1 min.)";
-    const U10_TIME_EN = "Fight time: 2 minutes (GS 1 min.)";
+    const U15_MALE   = "34 kg, 38 kg, 42 kg, 46 kg, 50 kg, 55 kg, 60 kg, 66 kg, 73 kg, +73 kg.";
+    const U15_FEMALE = "32 kg, 36 kg, 40 kg, 44 kg, 48 kg, 52 kg, 57 kg, 63 kg, 70 kg, +70 kg.";
 
     const texts = {
       hu: {
@@ -662,7 +694,8 @@
         "nav-contact": "Kapcsolat",
 
         "hero-title": 'Nemzetközi <span class="accent">Judo Arany Kupa</span> 2026',
-        "hero-sub": "Nemzetközi Cselgáncs verseny Borș községben. <br>Kategóriák, súlycsoportok az oldalon megtekinthetők, és a nevezéshez szükséges dokumentum letölthető.",
+        "event-date": "19–20.06.2026",
+        "hero-sub": "Nemzetközi cselgáncs verseny Borș községben. <br>Kategóriák, súlycsoportok az oldalon megtekinthetők, és a nevezéshez szükséges dokumentum letölthető.",
         "badge1": "Nemzetközi verseny",
         "badge2": "Borș (Románia)",
         "badge3": "Borș(i) Sportcsarnok",
@@ -677,17 +710,17 @@
         "about-title": "Verseny leírás",
         "about-sub": "Rövid, átlátható összefoglaló a versenyről.",
         "about-card1-title": "Általános információk",
-        "about-li1": "Nemzetközi judo verseny (klubok, egyesületek részére).",
+        "about-li1": "Nemzetközi judo verseny klubok és egyesületek részére.",
         "about-li2": "Cél: sportszerű küzdelem, tapasztalatszerzés.",
         "about-li3": "Mérlegelés és verseny lebonyolítás a helyszínen.",
         "about-li4": "Díjazás: a szervezői kiírás szerint.",
-
+        "about-media-title": "Verseny plakát",
         "about-card3-title": "Fontos tudnivalók",
         "about-li9": "Kérjük időben érkezni a mérlegeléshez.",
-        "about-li10": "Felszerelés: judogi (fehér/kék) ajánlott.",
+        "about-li10": "Felszerelés: judogi ajánlott.",
         "about-li11": "Kijelölt helyek a kísérőknek és nézőknek.",
-        "about-li12": "További infó: Kapcsolat / WhatsApp.",
-        "about-li13": "A sportolókat kísérő tanárok/edzők/hivatalos személyek teljes felelősséggel tartoznak a sportolók viselkedéséért és védelméért a verseny teljes ideje alatt. A szervezők ezért nem tehetők felelőssé; a fő felelősség a kísérő személyzetet terheli.",
+        "about-li12": "További információ: Kapcsolat / WhatsApp.",
+        "about-li13": "A sportolókat kísérő tanárok, edzők és hivatalos személyek teljes felelősséggel tartoznak a sportolók viselkedéséért és védelméért a verseny teljes ideje alatt.",
 
         "location-title": "Helyszín",
         "location-sub": "A verseny Romániában, Borș községben kerül megrendezésre.",
@@ -695,57 +728,47 @@
         "location-li1": "Ország: Románia",
         "location-li2": "Község: Borș",
         "location-li3": "Csarnok: Borș(i) Sportcsarnok",
-        "location-li4": "Megközelítés: autóval és tömegközlekedéssel is könnyen elérhető (parkolás a lehetőségek szerint).",
+        "location-li4": "Megközelítés: autóval és tömegközlekedéssel is könnyen elérhető.",
 
         "categories-title": "Kategóriák",
         "categories-sub": "Az alábbi korcsoportok, súlycsoportok és küzdelmi idők a megadott kiírás szerint.",
+        "cat-u7-title": "U7",
+        "cat-u7-sub": "Fiúk/Lányok súlycsoportok + küzdelmi idő.",
+        "u7-extra": "Korcsoport: 2020–2022. 4 judoka/csoportba lesznek beosztva, a mérkőzések NE-WAZA rendszerben lesznek.",
+        "cat-u9u15-title": "U9 / U11 / U13 / U15",
+        "cat-u9u15-sub": "Fiúk/Lányok súlycsoportok + küzdelmi idő.",
+        "male": "Férfi / Fiúk",
+        "female": "Női / Lányok",
 
-        /* ✅ ÚJ CÍMEK + PIROS INFÓ (HU) */
-        "cat-u6u8-title": "U6 / U8 (külön rubrika)",
-        "cat-u6u8-sub": "Fiúk/Lányok súlycsoportok + küzdelmi idő.",
-        "u6u8-extra": "Korcsoport: 2019–2020; 2021–2022. 4 judoka/csoportba lesznek beosztva, a mérkőzések NE-WAZA lesznek.",
+        "u7-title": "U7",
+        "u7-years": "Születési év: 2020 / 2021 / 2022",
+        "u7-male": U7_MALE,
+        "u7-female": U7_FEMALE,
+        "u7-time": "Küzdelmi idő: NE-WAZA",
 
-        "cat-u10u16-title": "U10 / U12 / U14 / U16",
-        "cat-u10u16-sub": "Fiúk/Lányok súlycsoportok + küzdelmi idő (GS).",
+        "u9-title": "U9",
+        "u9-years": "Születési év: 2018 / 2019",
+        "u9-male": U9_MALE,
+        "u9-female": U9_FEMALE,
+        "u9-time": "Küzdelmi idő: 2 perc (GS 1 perc)",
 
-        "male": "Férfi (Fiúk)",
-        "female": "Női (Lányok)",
+        "u11-title": "U11",
+        "u11-years": "Születési év: 2016 / 2017",
+        "u11-male": U11_MALE,
+        "u11-female": U11_FEMALE,
+        "u11-time": "Küzdelmi idő: 2 perc (GS 1 perc)",
 
-        "u6-title": "U6",
-        "u6-years": "Korcsoport: 2021 / 2022",
-        "u6-male": U6_MALE,
-        "u6-female": U6_FEMALE,
-        "u6-time": U6_TIME_HU,
+        "u13-title": "U13",
+        "u13-years": "Születési év: 2014 / 2015",
+        "u13-male": U13_MALE,
+        "u13-female": U13_FEMALE,
+        "u13-time": "Küzdelmi idő: 3 perc (GS 1 perc)",
 
-        "u8-title": "U8",
-        "u8-years": "Korcsoport: 2019 / 2020",
-        "u8-male": U8_MALE,
-        "u8-female": U8_FEMALE,
-        "u8-time": U8_TIME_HU,
-
-        "u10-title": "U10",
-        "u10-years": "Születési év: 2017 / 2018",
-        "u10-male": U10_MALE,
-        "u10-female": U10_FEMALE,
-        "u10-time": U10_TIME_HU,
-
-        "u12-title": "U12",
-        "u12-years": "Születési év: 2015 / 2016",
-        "u12-male": "27 kg, -30 kg, -34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-        "u12-female": "25 kg, -28 kg, -32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, 63 kg, +63 kg.",
-        "u12-time": "Küzdelmi idő: 2 perc (GS 1 perc)",
-
-        "u14-title": "U14",
-        "u14-years": "Születési év: 2013 / 2014",
-        "u14-male": "34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-        "u14-female": "-28 kg, 32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-        "u14-time": "Küzdelmi idő: 3 perc (GS 1 perc)",
-
-        "u16-title": "U16",
-        "u16-years": "Születési év: 2011 / 2012",
-        "u16-male": "38 kg, 42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, -81 kg, +81 kg.",
-        "u16-female": "-36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-        "u16-time": "Küzdelmi idő: 3 perc (GS 3 perc)",
+        "u15-title": "U15",
+        "u15-years": "Születési év: 2012 / 2013",
+        "u15-male": U15_MALE,
+        "u15-female": U15_FEMALE,
+        "u15-time": "Küzdelmi idő: 3 perc (GS 1 perc)",
 
         "download-section-title": "Letöltések",
         "download-title": "Word letöltés – nevezési / ellenőrző lista",
@@ -754,15 +777,17 @@
 
         "contact-title": "Kapcsolat",
         "contact-main": "Kérdésed van a nevezéssel vagy kategóriákkal kapcsolatban? Írj vagy hívj bátran.",
-        "contact-list-intro": "Hasznos, ha megírod: ",
+        "contact-list-intro": "Hasznos, ha megírod:",
         "contact-li1": "klub / egyesület neve;",
         "contact-li2": "korcsoport és várható létszám;",
-        "contact-li3": "speciális kérés (időpont, mérlegelés stb.).",
+        "contact-li3": "speciális kérés.",
         "contact-direct": "Közvetlen elérhetőségek",
+        "contact-phone-label": "Telefon:",
+        "contact-email-label": "E-mail:",
         "contact-call": "📞 Hívás",
         "contact-email": "✉️ Email",
         "contact-whatsapp": "💬 WhatsApp",
-        "contact-langs": "Válaszolunk magyarul, románul és angolul is. 🙂",
+        "contact-langs": "Válaszolunk magyarul, románul és angolul is.",
 
         "mobile-ads-title": "Nsport ajánlók",
         "mobile-ads-sub": "Kiemelt termékek és újdonságok",
@@ -772,7 +797,6 @@
         "mobile-ads-2-text": "Ruházat & felszerelés egy helyen.",
         "mobile-ads-3-title": "Nsport – Akciók",
         "mobile-ads-3-text": "Akciók, csomagok, gyors rendelés.",
-
         "pc-ads-1-title": "Nsport",
         "pc-ads-1-text": "Új termékek & akciók",
         "pc-ads-2-title": "Nsport",
@@ -782,7 +806,6 @@
         "pc-ads-4-title": "Nsport",
         "pc-ads-4-text": "Kiemelt termékek",
         "pc-ads-cta": "Megnézem →",
-
         "footer-madeby": "Készítette:",
         "footer-text": "© 2026 Nemzetközi Judo Arany Kupa – Minden jog fenntartva."
       },
@@ -796,7 +819,8 @@
         "nav-contact": "Contact",
 
         "hero-title": 'Concurs <span class="accent">internațional de judo</span> – Cupa de Aur 2026',
-        "hero-sub": "Competiție internațională de judo în Borș. <br>Categoriile și greutățile sunt pe site, iar documentul (Word) pentru înscriere se poate descărca.",
+        "event-date": "19–20.06.2026",
+        "hero-sub": "Competiție internațională de judo în Borș. <br>Categoriile și greutățile sunt pe site, iar documentul Word pentru înscriere se poate descărca.",
         "badge1": "Competiție internațională",
         "badge2": "Borș, România",
         "badge3": "Sala Sporturilor Borș(i)",
@@ -811,17 +835,17 @@
         "about-title": "Descrierea competiției",
         "about-sub": "Prezentare scurtă și clară despre competiție.",
         "about-card1-title": "Informații generale",
-        "about-li1": "Competiție internațională de judo (cluburi / asociații).",
-        "about-li2": "Scop: fair-play, experiență, dezvoltare sportivă.",
-        "about-li3": "Cântar + desfășurare la locație.",
+        "about-li1": "Competiție internațională de judo pentru cluburi și asociații.",
+        "about-li2": "Scop: fair-play, experiență și dezvoltare sportivă.",
+        "about-li3": "Cântar și desfășurare la locație.",
         "about-li4": "Premiere: conform regulamentului.",
-
+        "about-media-title": "Afiș competiție",
         "about-card3-title": "Informații importante",
         "about-li9": "Vă rugăm să ajungeți din timp pentru cântar.",
-        "about-li10": "Echipament: judogi (alb/albastru) recomandat.",
+        "about-li10": "Echipament: judogi recomandat.",
         "about-li11": "Zone dedicate pentru spectatori și însoțitori.",
-        "about-li12": "Info suplimentar: secțiunea Contact / WhatsApp.",
-        "about-li13": "Profesorii, antrenorii și oficialii care însoțesc sportivii sunt direct răspunzători de comportamentul și protecția acestora pe tot parcursul desfășurării competiției. Organizatorii nu pot fi făcuți răspunzători pentru aceste aspecte, deoarece responsabilitatea principală revine personalului însoțitor.",
+        "about-li12": "Info suplimentar: Contact / WhatsApp.",
+        "about-li13": "Profesorii, antrenorii și oficialii care însoțesc sportivii sunt direct răspunzători de comportamentul și protecția acestora pe tot parcursul desfășurării competiției.",
 
         "location-title": "Locație",
         "location-sub": "Competiția are loc în România, în comuna Borș.",
@@ -829,57 +853,47 @@
         "location-li1": "Țară: România",
         "location-li2": "Comuna: Borș",
         "location-li3": "Sală: Sala Sporturilor Borș(i)",
-        "location-li4": "Acces: ușor cu mașina și transport public (parcare în limita locurilor disponibile).",
+        "location-li4": "Acces: ușor cu mașina și transport public.",
 
         "categories-title": "Categorii",
         "categories-sub": "Mai jos sunt grupele de vârstă, categoriile de greutate și durata luptei conform datelor primite.",
-
-        /* ✅ ÚJ CÍMEK + PIROS INFÓ (RO) */
-        "cat-u6u8-title": "U6 / U8 (rubrică separată)",
-        "cat-u6u8-sub": "Masculin/Feminin + greutăți + timp de luptă.",
-        "u6u8-extra": "Categoria de vârstă 2020–2019; 2021–2022. Va fi grupată câte 4 Judoka. Meciurile vor fi NE-WAZA.",
-
-        "cat-u10u16-title": "U10 / U12 / U14 / U16",
-        "cat-u10u16-sub": "Masculin/Feminin + greutăți + timp de luptă (GS).",
-
+        "cat-u7-title": "U7",
+        "cat-u7-sub": "Masculin/Feminin + greutăți + timp de luptă.",
+        "u7-extra": "Categoria de vârstă: 2020–2022. Sportivii vor fi grupați câte 4 judoka/grupă. Meciurile vor fi NE-WAZA.",
+        "cat-u9u15-title": "U9 / U11 / U13 / U15",
+        "cat-u9u15-sub": "Masculin/Feminin + greutăți + timp de luptă.",
         "male": "Masculin",
         "female": "Feminin",
 
-        "u6-title": "U6",
-        "u6-years": "Categorie de vârstă: 2021 / 2022",
-        "u6-male": U6_MALE,
-        "u6-female": U6_FEMALE,
-        "u6-time": U6_TIME_RO,
+        "u7-title": "U7",
+        "u7-years": "Ani naștere: 2020 / 2021 / 2022",
+        "u7-male": U7_MALE,
+        "u7-female": U7_FEMALE,
+        "u7-time": "Timp de luptă: NE-WAZA",
 
-        "u8-title": "U8",
-        "u8-years": "Categorie de vârstă: 2019 / 2020",
-        "u8-male": U8_MALE,
-        "u8-female": U8_FEMALE,
-        "u8-time": U8_TIME_RO,
+        "u9-title": "U9",
+        "u9-years": "Ani naștere: 2018 / 2019",
+        "u9-male": U9_MALE,
+        "u9-female": U9_FEMALE,
+        "u9-time": "Timp de luptă: 2 minute (GS 1 min.)",
 
-        "u10-title": "U10",
-        "u10-years": "Ani naștere: 2017 / 2018",
-        "u10-male": U10_MALE,
-        "u10-female": U10_FEMALE,
-        "u10-time": U10_TIME_RO,
+        "u11-title": "U11",
+        "u11-years": "Ani naștere: 2016 / 2017",
+        "u11-male": U11_MALE,
+        "u11-female": U11_FEMALE,
+        "u11-time": "Timp de luptă: 2 minute (GS 1 min.)",
 
-        "u12-title": "U12",
-        "u12-years": "Ani naștere: 2015 / 2016",
-        "u12-male": "27 kg, -30 kg, -34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-        "u12-female": "25 kg, -28 kg, -32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, 63 kg, +63 kg.",
-        "u12-time": "Timp de luptă: 2 minute (GS 1 min.)",
+        "u13-title": "U13",
+        "u13-years": "Ani naștere: 2014 / 2015",
+        "u13-male": U13_MALE,
+        "u13-female": U13_FEMALE,
+        "u13-time": "Timp de luptă: 3 minute (GS 1 min.)",
 
-        "u14-title": "U14",
-        "u14-years": "Ani naștere: 2013 / 2014",
-        "u14-male": "34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-        "u14-female": "-28 kg, 32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-        "u14-time": "Timp de luptă: 3 minute (GS 1 min.)",
-
-        "u16-title": "U16",
-        "u16-years": "Ani naștere: 2011 / 2012",
-        "u16-male": "38 kg, 42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, -81 kg, +81 kg.",
-        "u16-female": "-36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-        "u16-time": "Timp de luptă: 3 minute (GS 3 min.)",
+        "u15-title": "U15",
+        "u15-years": "Ani naștere: 2012 / 2013",
+        "u15-male": U15_MALE,
+        "u15-female": U15_FEMALE,
+        "u15-time": "Timp de luptă: 3 minute (GS 1 min.)",
 
         "download-section-title": "Descărcări",
         "download-title": "Descărcare Word – listă înscriere / verificare",
@@ -887,16 +901,18 @@
         "download-btn": "⬇️ Descarcă lista Word",
 
         "contact-title": "Contact",
-        "contact-main": "Întrebări despre înscriere sau categorii? Scrie-mi sau sună cu încredere.",
-        "contact-list-intro": "Este util dacă menționezi: ",
+        "contact-main": "Întrebări despre înscriere sau categorii? Scrie sau sună cu încredere.",
+        "contact-list-intro": "Este util dacă menționezi:",
         "contact-li1": "clubul / asociația;",
         "contact-li2": "categoria și numărul estimat de sportivi;",
-        "contact-li3": "orice solicitare specială (program, cântar etc.).",
+        "contact-li3": "orice solicitare specială.",
         "contact-direct": "Date de contact",
+        "contact-phone-label": "Telefon:",
+        "contact-email-label": "E-mail:",
         "contact-call": "📞 Sună",
         "contact-email": "✉️ Email",
         "contact-whatsapp": "💬 WhatsApp",
-        "contact-langs": "Răspundem în maghiară, română și engleză. 🙂",
+        "contact-langs": "Răspundem în maghiară, română și engleză.",
 
         "mobile-ads-title": "Recomandări Nsport",
         "mobile-ads-sub": "Produse evidențiate și noutăți",
@@ -906,7 +922,6 @@
         "mobile-ads-2-text": "Îmbrăcăminte & echipament într-un singur loc.",
         "mobile-ads-3-title": "Nsport – Oferte",
         "mobile-ads-3-text": "Promoții, pachete, comandă rapidă.",
-
         "pc-ads-1-title": "Nsport",
         "pc-ads-1-text": "Produse noi & promoții",
         "pc-ads-2-title": "Nsport",
@@ -916,7 +931,6 @@
         "pc-ads-4-title": "Nsport",
         "pc-ads-4-text": "Produse evidențiate",
         "pc-ads-cta": "Vezi →",
-
         "footer-madeby": "Creat de:",
         "footer-text": "© 2026 Concurs internațional de judo – Cupa de Aur – Toate drepturile rezervate."
       },
@@ -930,7 +944,8 @@
         "nav-contact": "Contact",
 
         "hero-title": 'International <span class="accent">Judo Tournament</span> – Gold Cup 2026',
-        "hero-sub": "International judo tournament in Borș, Romania. <br>Age groups & weight classes are available on the website, and the Word file for registration can be downloaded.",
+        "event-date": "19–20.06.2026",
+        "hero-sub": "International judo tournament in Borș, Romania. <br>Age groups and weight classes are available on the website, and the Word registration file can be downloaded.",
         "badge1": "International tournament",
         "badge2": "Borș, Romania",
         "badge3": "Borș(i) Sports Hall",
@@ -945,17 +960,17 @@
         "about-title": "Tournament overview",
         "about-sub": "A short and clear overview of the event.",
         "about-card1-title": "General info",
-        "about-li1": "International judo tournament (clubs / associations).",
+        "about-li1": "International judo tournament for clubs and associations.",
         "about-li2": "Goal: fair play, experience and development.",
         "about-li3": "Weigh-in and competition held at the venue.",
-        "about-li4": "Awards: according to the official bulletin.",
-
+        "about-li4": "Awards according to the official rules.",
+        "about-media-title": "Event poster",
         "about-card3-title": "Important information",
         "about-li9": "Please arrive early for weigh-in.",
-        "about-li10": "Equipment: judogi (white/blue) recommended.",
+        "about-li10": "Equipment: judogi recommended.",
         "about-li11": "Designated areas for spectators and companions.",
-        "about-li12": "More info: Contact section / WhatsApp.",
-        "about-li13": "Teachers, coaches and officials accompanying the athletes are directly responsible for their behavior and protection throughout the entire competition. The organizers cannot be held liable for these aspects, as the primary responsibility lies with the accompanying staff.",
+        "about-li12": "More info: Contact / WhatsApp.",
+        "about-li13": "Teachers, coaches and officials accompanying athletes are directly responsible for their behavior and protection throughout the competition.",
 
         "location-title": "Venue",
         "location-sub": "The event takes place in Romania, in the commune of Borș.",
@@ -963,57 +978,47 @@
         "location-li1": "Country: Romania",
         "location-li2": "Commune: Borș",
         "location-li3": "Hall: Borș(i) Sports Hall",
-        "location-li4": "Access: easy by car and public transport (parking subject to availability).",
+        "location-li4": "Access: easy by car and public transport.",
 
         "categories-title": "Categories",
         "categories-sub": "Below are the age groups, weight categories and fight times as provided.",
-
-        /* ✅ ÚJ CÍMEK + PIROS INFÓ (EN) */
-        "cat-u6u8-title": "U6 / U8 (separate section)",
-        "cat-u6u8-sub": "Male/Female weight classes + fight time.",
-        "u6u8-extra": "Age category 2019–2020; 2021–2022. Athletes will be grouped in sets of 4 judoka. Matches will be NE-WAZA.",
-
-        "cat-u10u16-title": "U10 / U12 / U14 / U16",
-        "cat-u10u16-sub": "Male/Female weight classes + fight time (GS).",
-
+        "cat-u7-title": "U7",
+        "cat-u7-sub": "Male/Female weight classes + fight time.",
+        "u7-extra": "Age category: 2020–2022. Athletes will be grouped in sets of 4 judoka. Matches will be NE-WAZA.",
+        "cat-u9u15-title": "U9 / U11 / U13 / U15",
+        "cat-u9u15-sub": "Male/Female weight classes + fight time.",
         "male": "Male",
         "female": "Female",
 
-        "u6-title": "U6",
-        "u6-years": "Age group: 2021 / 2022",
-        "u6-male": U6_MALE,
-        "u6-female": U6_FEMALE,
-        "u6-time": U6_TIME_EN,
+        "u7-title": "U7",
+        "u7-years": "Birth years: 2020 / 2021 / 2022",
+        "u7-male": U7_MALE,
+        "u7-female": U7_FEMALE,
+        "u7-time": "Fight time: NE-WAZA",
 
-        "u8-title": "U8",
-        "u8-years": "Age group: 2019 / 2020",
-        "u8-male": U8_MALE,
-        "u8-female": U8_FEMALE,
-        "u8-time": U8_TIME_EN,
+        "u9-title": "U9",
+        "u9-years": "Birth years: 2018 / 2019",
+        "u9-male": U9_MALE,
+        "u9-female": U9_FEMALE,
+        "u9-time": "Fight time: 2 minutes (GS 1 min.)",
 
-        "u10-title": "U10",
-        "u10-years": "Birth years: 2017 / 2018",
-        "u10-male": U10_MALE,
-        "u10-female": U10_FEMALE,
-        "u10-time": U10_TIME_EN,
+        "u11-title": "U11",
+        "u11-years": "Birth years: 2016 / 2017",
+        "u11-male": U11_MALE,
+        "u11-female": U11_FEMALE,
+        "u11-time": "Fight time: 2 minutes (GS 1 min.)",
 
-        "u12-title": "U12",
-        "u12-years": "Birth years: 2015 / 2016",
-        "u12-male": "27 kg, -30 kg, -34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-        "u12-female": "25 kg, -28 kg, -32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, 63 kg, +63 kg.",
-        "u12-time": "Fight time: 2 minutes (GS 1 min.)",
+        "u13-title": "U13",
+        "u13-years": "Birth years: 2014 / 2015",
+        "u13-male": U13_MALE,
+        "u13-female": U13_FEMALE,
+        "u13-time": "Fight time: 3 minutes (GS 1 min.)",
 
-        "u14-title": "U14",
-        "u14-years": "Birth years: 2013 / 2014",
-        "u14-male": "34 kg, -38 kg, -42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, +73 kg.",
-        "u14-female": "-28 kg, 32 kg, -36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-        "u14-time": "Fight time: 3 minutes (GS 1 min.)",
-
-        "u16-title": "U16",
-        "u16-years": "Birth years: 2011 / 2012",
-        "u16-male": "38 kg, 42 kg, -46 kg, -50 kg, -55 kg, -60 kg, -66 kg, -73 kg, -81 kg, +81 kg.",
-        "u16-female": "-36 kg, -40 kg, -44 kg, -48 kg, -52 kg, -57 kg, -63 kg, -70 kg, +70 kg.",
-        "u16-time": "Fight time: 3 minutes (GS 3 min.)",
+        "u15-title": "U15",
+        "u15-years": "Birth years: 2012 / 2013",
+        "u15-male": U15_MALE,
+        "u15-female": U15_FEMALE,
+        "u15-time": "Fight time: 3 minutes (GS 1 min.)",
 
         "download-section-title": "Downloads",
         "download-title": "Word download – entry / check list",
@@ -1022,15 +1027,17 @@
 
         "contact-title": "Contact",
         "contact-main": "Questions about registration or categories? Message or call anytime.",
-        "contact-list-intro": "Helpful details to include: ",
+        "contact-list-intro": "Helpful details to include:",
         "contact-li1": "club / association name;",
         "contact-li2": "category and expected number of athletes;",
-        "contact-li3": "any special request (schedule, weigh-in, etc.).",
+        "contact-li3": "any special request.",
         "contact-direct": "Direct contacts",
+        "contact-phone-label": "Phone:",
+        "contact-email-label": "Email:",
         "contact-call": "📞 Call",
         "contact-email": "✉️ Email",
         "contact-whatsapp": "💬 WhatsApp",
-        "contact-langs": "We can reply in Hungarian, Romanian and English. 🙂",
+        "contact-langs": "We can reply in Hungarian, Romanian and English.",
 
         "mobile-ads-title": "Nsport picks",
         "mobile-ads-sub": "Featured products and new arrivals",
@@ -1040,7 +1047,6 @@
         "mobile-ads-2-text": "Apparel & equipment in one place.",
         "mobile-ads-3-title": "Nsport – Deals",
         "mobile-ads-3-text": "Promos, bundles, quick order.",
-
         "pc-ads-1-title": "Nsport",
         "pc-ads-1-text": "New arrivals & deals",
         "pc-ads-2-title": "Nsport",
@@ -1050,9 +1056,8 @@
         "pc-ads-4-title": "Nsport",
         "pc-ads-4-text": "Featured products",
         "pc-ads-cta": "View →",
-
         "footer-madeby": "Made by:",
-        "footer-text": "© 2026 International Judo Tournament – Golden Cup – All rights reserved."
+        "footer-text": "© 2026 International Judo Tournament – Gold Cup – All rights reserved."
       }
     };
 
@@ -1076,6 +1081,7 @@
     }
 
     setLanguage('ro');
+
     document.getElementById('btn-hu').addEventListener('click', () => setLanguage('hu'));
     document.getElementById('btn-ro').addEventListener('click', () => setLanguage('ro'));
     document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
