@@ -204,6 +204,38 @@
     }
     .hero-note{ font-size:.75rem; color:#b5b5b5; margin-top:6px; text-align:center; }
 
+    .info-highlight{
+      margin:4px 0 22px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:14px;
+    }
+    .info-highlight-card{
+      background:rgba(8,8,8,.96);
+      border:1px solid rgba(255,215,0,.75);
+      border-radius:18px;
+      padding:16px;
+      box-shadow:0 0 20px rgba(0,0,0,.85), 0 0 22px rgba(255,215,0,.22);
+    }
+    .info-highlight-card h3{
+      color:#FFD700;
+      font-size:1.05rem;
+      margin-bottom:8px;
+    }
+    .info-highlight-card p,
+    .info-highlight-card li{
+      color:#f0f0f0;
+      font-size:.92rem;
+      line-height:1.55;
+    }
+    .info-highlight-card ul{ margin-left:18px; }
+    .price-big{
+      font-size:1.55rem;
+      font-weight:900;
+      color:#FFD700;
+      text-shadow:0 0 14px rgba(255,215,0,.45);
+    }
+
     section{ padding:28px 0 8px; }
     h2.section-title{ font-size:1.6rem; margin-bottom:12px; }
     .section-sub{ font-size:.95rem; color:#d0d0d0; margin-bottom:18px; }
@@ -477,6 +509,27 @@
       </div>
     </section>
 
+    <section class="info-highlight" aria-label="Taxă și premii">
+      <div class="info-highlight-card">
+        <h3 data-i18n="fee-title"></h3>
+        <p class="price-big" data-i18n="fee-value"></p>
+      </div>
+
+      <div class="info-highlight-card">
+        <h3 data-i18n="awards-title"></h3>
+        <ul>
+          <li data-i18n="award-1"></li>
+          <li data-i18n="award-2"></li>
+          <li data-i18n="award-3"></li>
+        </ul>
+      </div>
+
+      <div class="info-highlight-card">
+        <h3 data-i18n="team-awards-title"></h3>
+        <p data-i18n="team-awards-text"></p>
+      </div>
+    </section>
+
     <section>
       <h2 class="section-title" data-i18n="about-title"></h2>
       <p class="section-sub" data-i18n="about-sub"></p>
@@ -707,6 +760,15 @@
         "preview-desc": "Info • helyszín • kategóriák • letöltések",
         "preview-note": "Minden fontos info gyorsan, mobilbarát formában.",
 
+        "fee-title": "Nevezési díj",
+        "fee-value": "120 Lei / sportoló",
+        "awards-title": "Egyéni díjazás",
+        "award-1": "1. hely: Kupa + érem",
+        "award-2": "2. hely: Érem",
+        "award-3": "3. hely: Érem",
+        "team-awards-title": "Csapatdíjazás",
+        "team-awards-text": "Csapatok számára kupák kerülnek kiosztásra.",
+
         "about-title": "Verseny leírás",
         "about-sub": "Rövid, átlátható összefoglaló a versenyről.",
         "about-card1-title": "Általános információk",
@@ -832,6 +894,15 @@
         "preview-desc": "Info • locație • categorii • descărcări",
         "preview-note": "Totul clar și optimizat pentru mobil.",
 
+        "fee-title": "Taxă de înscriere",
+        "fee-value": "120 Lei / sportiv",
+        "awards-title": "Premii individuale",
+        "award-1": "Locul 1: Cupă + medalie",
+        "award-2": "Locul 2: Medalie",
+        "award-3": "Locul 3: Medalie",
+        "team-awards-title": "Premii pentru echipe",
+        "team-awards-text": "Pentru echipe se vor acorda cupe.",
+
         "about-title": "Descrierea competiției",
         "about-sub": "Prezentare scurtă și clară despre competiție.",
         "about-card1-title": "Informații generale",
@@ -956,6 +1027,15 @@
         "preview-name": "Gold Cup 2026",
         "preview-desc": "Info • venue • categories • downloads",
         "preview-note": "All key info in a clean mobile-friendly layout.",
+
+        "fee-title": "Registration fee",
+        "fee-value": "120 Lei / athlete",
+        "awards-title": "Individual awards",
+        "award-1": "1st place: Cup + medal",
+        "award-2": "2nd place: Medal",
+        "award-3": "3rd place: Medal",
+        "team-awards-title": "Team awards",
+        "team-awards-text": "Cups will be awarded to teams.",
 
         "about-title": "Tournament overview",
         "about-sub": "A short and clear overview of the event.",
